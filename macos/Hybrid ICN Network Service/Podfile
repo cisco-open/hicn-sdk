@@ -1,0 +1,11 @@
+ platform :osx, '10.15'
+
+target 'Hybrid ICN Network Service' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  pod 'Charts'
+  pod 'Preferences'  
+# Pods for hICNTools
+
+end
+workspace 'Hybrid ICN Network Service'

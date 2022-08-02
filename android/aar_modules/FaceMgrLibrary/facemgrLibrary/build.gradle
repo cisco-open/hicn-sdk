@@ -1,0 +1,157 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+    }
+}
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 28
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++17 -frtti -fexceptions"
+            }
+        }
+        ndk {
+            abiFilters 'arm64-v8a', 'x86_64'
+        }
+
+        splits {
+            abi {
+                reset()
+                include 'arm64-v8a', 'x86_64'
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.18.1"
+        }
+    }
+
+    libraryVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFileName = "facemgrlibrary-${variant.name}-v${defaultConfig.versionCode}-${defaultConfig.versionName}.aar"
+        }
+    }
+
+}
+
+
+def getVersionCode_() {
+
+    if ("${getProjectProperty('VERSION_CODE')}".isEmpty())
+        return 5
+    else {
+        return "${getProjectProperty('VERSION_CODE')}".toInteger()
+    }
+}
+
+def getVersion() {
+
+    if ("${getProjectProperty('VERSION')}".isEmpty())
+        return "1.0"
+    else {
+        return "1." + "${getProjectProperty('VERSION')}"
+    }
+}
+
+def String getProjectProperty(String propertyName)
+{
+    String value = "1"
+    if (hasProperty(propertyName))
+    {
+        value = this.properties[propertyName]
+    }
+    return value
+}
+
+publishing {
+    repositories {
+        maven {
+            name = 'GitHubPackages'
+            url = uri(project.findProperty('MVN_REPO'))
+            credentials {
+                username = project.findProperty('GITHUB_USER')
+                password = project.findProperty('GITHUB_TOKEN')
+            }
+        }
+
+    }
+
+    afterEvaluate {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = 'com.cisco.hicn'
+                version = project.findProperty('VERSION')
+                artifactId 'facemgr'
+            }
+            debug(MavenPublication) {
+                from components.debug
+
+                groupId = 'com.cisco.hicn'
+                version = project.findProperty('VERSION')
+                artifactId 'facemgrlibrary-debug'
+            }
+        }
+    }
+}
+
+repositories {
+    maven {
+        name = 'GitHubPackages'
+        url = uri(this.properties['MVN_REPO'])
+        credentials {
+            username = this.properties["GITHUB_USER"]
+            password = this.properties["GITHUB_TOKEN"]
+        }
+    }
+}
+
+dependencies {
+    if (Integer.parseInt(this.properties['MODULE_SRC']) == 0) {
+        implementation 'com.cisco.hicn:common:+'
+    } else {
+        implementation project(":aar:common")
+    }
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+}

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+    Copyright (c) 2019 Cisco and/or its affiliates.
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at:
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="5pt"
+    android:layout_marginBottom="5pt"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5pt"
+            android:layout_weight="2"
+            android:gravity="right|center_vertical"
+            android:inputType="text"
+            android:text="@string/higet_list_view_url"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/higet_list_view_url_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5pt"
+            android:layout_weight="2"
+            android:gravity="right|center_vertical"
+            android:inputType="text"
+            android:text="@string/higet_saved_path"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/higet_saved_path_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5pt"
+            android:layout_weight="2"
+            android:gravity="right|center_vertical"
+            android:inputType="text"
+            android:text="@string/higet_md5"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/higet_md5_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5pt"
+            android:layout_weight="2"
+            android:gravity="right|center_vertical"
+            android:inputType="text"
+            android:text="@string/higet_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/higet_size_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5pt"
+            android:layout_weight="2"
+            android:gravity="right|center_vertical"
+            android:inputType="text"
+            android:text="@string/higet_date"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/higet_date_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:singleLine="true" />
+    </LinearLayout>
+</LinearLayout>

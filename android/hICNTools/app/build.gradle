@@ -1,0 +1,113 @@
+/*
+ * Copyright (c) 2019 Cisco and/or its affiliates.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at:
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "io.fd.hicn.hicntools"
+        minSdkVersion 28
+        targetSdkVersion 29
+        versionCode getVersionCode_()
+        versionName getVersion()
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++14 -frtti -fexceptions"
+            }
+        }
+        ndk {
+            abiFilters 'x86_64', 'arm64-v8a'
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            def appName = "hICN_Tools"
+            outputFileName = appName + ".apk"
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("hicnforwarder.keystore")
+            storePassword "hicnforwarder"
+            keyAlias "hicnforwarder"
+            keyPassword "hicnforwarder"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.18.1"
+        }
+    }
+}
+
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+def getVersionCode_() {
+
+    if ("${getProjectProperty('VERSION_CODE')}".isEmpty())
+        return 5
+    else {
+        return "${getProjectProperty('VERSION_CODE')}".toInteger()
+    }
+}
+
+
+def getVersion() {
+
+    if ("${getProjectProperty('VERSION')}".isEmpty())
+        return "1.0"
+    else {
+        return "1." + "${getProjectProperty('VERSION')}"
+    }
+}
+
+def String getProjectProperty(String propertyName)
+{
+    String value = "1"
+    if (hasProperty(propertyName))
+    {
+        value = this.properties[propertyName]
+    }
+    return value
+}
+
+dependencies {
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'com.github.cachapa:ExpandableLayout:2.9.2'
+
+}

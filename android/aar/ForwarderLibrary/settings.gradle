@@ -1,0 +1,2 @@
+include ':aar:common'
+include ':hicnforwarderLibrary'

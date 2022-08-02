@@ -1,0 +1,93 @@
+<!--
+    Copyright (c) 2019 Cisco and/or its affiliates.
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at:
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<resources>
+
+    <string name="app_name">hICN SpeedTest &amp; Tools</string>
+    <string name="hiping">HiPing</string>
+    <string name="hiperf">HiPerf</string>
+    <string name="higet">HiGet</string>
+
+    <!-- hiping-->
+
+    <string name="hiping_hicn_name">HICN Name</string>
+    <string name="hiping_source_port">Source Port</string>
+    <string name="hiping_destination_port">Destination Port</string>
+    <string name="hiping_ttl">TTL</string>
+    <string name="hiping_ping_interval">Ping Interval[us]</string>
+    <string name="hiping_max_pings">Max Pings</string>
+    <string name="hiping_lifetime">Lifetime[ms]</string>
+    <string name="hiping_open_tcp_connection">Open Tcp Connection</string>
+    <string name="hiping_send_syn_message">Send Syn Message</string>
+    <string name="hiping_send_ack_message">Send Ack Message</string>
+    <string name="hiping_start_button">Start</string>
+    <string name="hiping_stop_button">Stop</string>
+    <string name="hiping_autoscroll">Autoscroll</string>
+    <string name="hiping_more_options">More Options</string>
+    <string name="hiping_hide_options">Hide Options</string>
+    <string name="hiping_cancel_log_button">Cancel</string>
+    <string name="hiping_shared_preferences">hiping_shared_preferences</string>
+    <string name="hiping_hicn_name_key">hiping_hicn_name_key</string>
+    <string name="hiping_source_port_key">hiping_source_port_key</string>
+    <string name="hiping_destination_port_key">hiping_destination_port_key</string>
+    <string name="hiping_ttl_key">hiping_ttl_key</string>
+    <string name="hiping_ping_interval_key">hiping_ping_interval_key</string>
+    <string name="hiping_max_pings_key">hiping_max_pings_key</string>
+    <string name="hiping_lifetime_key">hiping_lifetime_key</string>
+    <string name="hiping_open_tcp_connection_key">hiping_open_tcp_connection_key</string>
+    <string name="hiping_send_syn_message_key">hiping_send_syn_message_key</string>
+    <string name="hiping_send_ack_message_key">hiping_send_ack_message_key</string>
+    <string name="hiping_log_autosroll_key">hiping_log_autoscroll_key</string>
+
+    <!-- hiperf -->
+
+    <string name="hiperf_hicn_name">HICN Name</string>
+    <string name="hiperf_raaqm_beta_parameter">RAAQM Beta</string>
+    <string name="hiperf_raaqm_drop_factor_parameter">RAAQM Drop Factor</string>
+    <string name="hiperf_fixed_window_size">Fixed Window Size</string>
+    <string name="hiperf_window_size">Window Size</string>
+    <string name="hiperf_stats_interval">Stats Interval[ms]</string>
+    <string name="hiperf_rtc_protocol">Rtc Protocol</string>
+    <string name="hiperf_start_button">Start</string>
+    <string name="hiperf_stop_button">Stop</string>
+    <string name="hiperf_autoscroll">Autoscroll</string>
+    <string name="hiperf_more_options">More Options</string>
+    <string name="hiperf_hide_options">Hide Options</string>
+    <string name="hiperf_cancel_log_button">Cancel</string>
+    <string name="hiperf_shared_preferences">hiperf_shared_preferences</string>
+    <string name="hiperf_hicn_name_key">hiperf_hicn_name_key</string>
+    <string name="hiperf_raaqm_beta_parameter_key">hiperf_raaqm_beta_parameter_key</string>
+    <string name="hiperf_raaqm_drop_factor_parameter_key">hiperf_raaqm_drop_factor_parameter_key</string>
+    <string name="hiperf_fixed_window_size_key">hiperf_fixed_window_size_key</string>
+    <string name="hiperf_window_size_key">hiperf_window_size_key</string>
+    <string name="hiperf_rtc_protocol_key">hiperf_rtc_protocol_key</string>
+    <string name="hiperf_stats_interval_key">hiperf_stats_interval_key</string>
+    <string name="hiperf_log_autosroll_key">hiperf_log_autoscroll_key</string>
+
+    <!-- higet -->
+    <string name="higet_url">Url</string>
+    <string name="higet_downlaod_path">Download Path</string>
+    <string name="higet_download_button">Download</string>
+    <string name="higet_stop_button">Stop</string>
+    <string name="higet_resume">Resume</string>
+    <string name="higet_shared_preferences">higet_shared_preferences</string>
+    <string name="higet_url_key">higet_url_key</string>
+    <string name="higet_download_path_key">higet_download_path_key</string>
+    <string name="higet_list_view_url">Url:</string>
+    <string name="higet_saved_path">Saved Path:</string>
+    <string name="higet_md5">MD5:</string>
+    <string name="higet_size">Size:</string>
+    <string name="higet_date">Date:</string>
+
+</resources>

@@ -1,0 +1,647 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		502B68E72254947B00789D9F /* PreferencesStyle+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */; };
+		59492EE0552BA53F02423EC3 /* Pods_Hybrid_ICN_Network_Service.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CD9B1BB865F14F78815E0A /* Pods_Hybrid_ICN_Network_Service.framework */; };
+		BD374F6624360E3900FC72EC /* libparc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD374F5E24360DEA00FC72EC /* libparc.dylib */; };
+		BD374F6724360E4700FC72EC /* libhicntransport.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD374F6424360E1F00FC72EC /* libhicntransport.dylib */; };
+		BD374F6824360E5800FC72EC /* libhicn.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD374F5A24360D9B00FC72EC /* libhicn.dylib */; };
+		BD5507C32488F1DE000B9A2F /* libhicnctrl.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD5507C22488F1DE000B9A2F /* libhicnctrl.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		BD5507C42488F203000B9A2F /* libhicnctrl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5507C22488F1DE000B9A2F /* libhicnctrl.dylib */; };
+		BD90564E248A496C00218BA2 /* CLIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD90564D248A496C00218BA2 /* CLIViewController.xib */; };
+		BD905650248A497400218BA2 /* CLIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD90564F248A497400218BA2 /* CLIViewController.swift */; };
+		BD905652248A99BA00218BA2 /* StringTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD905651248A99BA00218BA2 /* StringTextView.swift */; };
+		BD9781A7248AA9EC0027ABF4 /* hicnControllerWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = BD9781A6248AA9EC0027ABF4 /* hicnControllerWrapper.c */; };
+		BD99B4B7243B1A400041CC7E /* libhicn.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD99B4B5243B1A400041CC7E /* libhicn.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		BD99B4B8243B1A400041CC7E /* libhicntransport.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD99B4B6243B1A400041CC7E /* libhicntransport.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		BD99B4BA243B1A750041CC7E /* libparc.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD99B4B9243B1A750041CC7E /* libparc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		BD99B4BD243B1A900041CC7E /* libcrypto.1.1.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD99B4BB243B1A900041CC7E /* libcrypto.1.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		BD99B4BE243B1A900041CC7E /* libssl.1.1.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD99B4BC243B1A900041CC7E /* libssl.1.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		BD99B4C2243B31560041CC7E /* libevent-2.1.7.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD99B4C1243B31560041CC7E /* libevent-2.1.7.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		BD99B4C3243B34B00041CC7E /* libevent-2.1.7.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD99B4C1243B31560041CC7E /* libevent-2.1.7.dylib */; };
+		BDA1774C2486843C00B65FE0 /* hicnProxyWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDA1774A2486843C00B65FE0 /* hicnProxyWrapper.cpp */; };
+		BDE96068248694D500BF45B9 /* HttpProxyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE96066248694D500BF45B9 /* HttpProxyViewController.swift */; };
+		BDE96069248694D500BF45B9 /* HttpProxyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDE96067248694D500BF45B9 /* HttpProxyViewController.xib */; };
+		BDF414F924341C58000EBB41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF414F824341C58000EBB41 /* Constants.swift */; };
+		BDF414FD2434267E000EBB41 /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF414FC2434267E000EBB41 /* RepeatingTimer.swift */; };
+		BDF4150124342A8F000EBB41 /* hiperfWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF414FF24342A8F000EBB41 /* hiperfWrapper.cpp */; };
+		BDF41504243430E1000EBB41 /* hiperf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF41502243430E1000EBB41 /* hiperf.cpp */; };
+		BDF41507243439F3000EBB41 /* forwarderWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = BDF41506243439F3000EBB41 /* forwarderWrapper.c */; };
+		E3194E4122573FF3006FE775 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3194E4022573FF3006FE775 /* util.swift */; };
+		E34E9EEA20E6149B002F8F86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9EE920E6149B002F8F86 /* AppDelegate.swift */; };
+		E34E9EEC20E6149D002F8F86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E34E9EEB20E6149D002F8F86 /* Assets.xcassets */; };
+		E34E9EEF20E6149D002F8F86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9EED20E6149D002F8F86 /* MainMenu.xib */; };
+		E34E9EFF20E617E7002F8F86 /* HiperfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9EFE20E617E7002F8F86 /* HiperfViewController.swift */; };
+		E34E9F0120E61A26002F8F86 /* HiperfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9F0020E61A26002F8F86 /* HiperfViewController.xib */; };
+		E34E9F0320E61BC0002F8F86 /* ForwarderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E9F0220E61BC0002F8F86 /* ForwarderViewController.swift */; };
+		E34E9F0520E61C06002F8F86 /* ForwarderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E34E9F0420E61C06002F8F86 /* ForwarderViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E34E9EF920E61508002F8F86 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BD5507C32488F1DE000B9A2F /* libhicnctrl.dylib in Embed Frameworks */,
+				BD99B4C2243B31560041CC7E /* libevent-2.1.7.dylib in Embed Frameworks */,
+				BD99B4BD243B1A900041CC7E /* libcrypto.1.1.dylib in Embed Frameworks */,
+				BD99B4BE243B1A900041CC7E /* libssl.1.1.dylib in Embed Frameworks */,
+				BD99B4BA243B1A750041CC7E /* libparc.dylib in Embed Frameworks */,
+				BD99B4B7243B1A400041CC7E /* libhicn.dylib in Embed Frameworks */,
+				BD99B4B8243B1A400041CC7E /* libhicntransport.dylib in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		24CD9B1BB865F14F78815E0A /* Pods_Hybrid_ICN_Network_Service.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hybrid_ICN_Network_Service.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38D27A3DDEDBD7004821F56A /* Pods-Hybrid ICN Network Service.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hybrid ICN Network Service.release.xcconfig"; path = "Target Support Files/Pods-Hybrid ICN Network Service/Pods-Hybrid ICN Network Service.release.xcconfig"; sourceTree = "<group>"; };
+		502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "PreferencesStyle+UserDefaults.swift"; sourceTree = "<group>"; usesTabs = 1; };
+		BD374F5A24360D9B00FC72EC /* libhicn.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libhicn.dylib; path = ../lib/libhicn.dylib; sourceTree = "<group>"; };
+		BD374F5C24360DB300FC72EC /* libssl.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.1.1.dylib; path = ../lib/libssl.1.1.dylib; sourceTree = "<group>"; };
+		BD374F5E24360DEA00FC72EC /* libparc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libparc.dylib; path = ../lib/libparc.dylib; sourceTree = "<group>"; };
+		BD374F6024360DF900FC72EC /* libcrypto.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.1.dylib; path = ../lib/libcrypto.1.1.dylib; sourceTree = "<group>"; };
+		BD374F6224360E0C00FC72EC /* libevent.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libevent.dylib; path = ../lib/libevent.dylib; sourceTree = "<group>"; };
+		BD374F6424360E1F00FC72EC /* libhicntransport.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libhicntransport.dylib; path = ../lib/libhicntransport.dylib; sourceTree = "<group>"; };
+		BD374F692436102D00FC72EC /* libevent-2.1.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libevent-2.1.7.dylib"; path = "../lib/libevent-2.1.7.dylib"; sourceTree = "<group>"; };
+		BD5507C22488F1DE000B9A2F /* libhicnctrl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libhicnctrl.dylib; path = ../usr/lib/libhicnctrl.dylib; sourceTree = "<group>"; };
+		BD90564D248A496C00218BA2 /* CLIViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLIViewController.xib; sourceTree = "<group>"; };
+		BD90564F248A497400218BA2 /* CLIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLIViewController.swift; sourceTree = "<group>"; };
+		BD905651248A99BA00218BA2 /* StringTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTextView.swift; sourceTree = "<group>"; };
+		BD9781A5248AA9EC0027ABF4 /* hicnControllerWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hicnControllerWrapper.h; sourceTree = "<group>"; };
+		BD9781A6248AA9EC0027ABF4 /* hicnControllerWrapper.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = hicnControllerWrapper.c; sourceTree = "<group>"; };
+		BD99B4B5243B1A400041CC7E /* libhicn.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libhicn.dylib; path = ../usr/lib/libhicn.dylib; sourceTree = "<group>"; };
+		BD99B4B6243B1A400041CC7E /* libhicntransport.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libhicntransport.dylib; path = ../usr/lib/libhicntransport.dylib; sourceTree = "<group>"; };
+		BD99B4B9243B1A750041CC7E /* libparc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libparc.dylib; path = ../usr/lib/libparc.dylib; sourceTree = "<group>"; };
+		BD99B4BB243B1A900041CC7E /* libcrypto.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.1.dylib; path = ../usr/lib/libcrypto.1.1.dylib; sourceTree = "<group>"; };
+		BD99B4BC243B1A900041CC7E /* libssl.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.1.1.dylib; path = ../usr/lib/libssl.1.1.dylib; sourceTree = "<group>"; };
+		BD99B4BF243B1AAF0041CC7E /* libevent-2.1.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libevent-2.1.7.dylib"; path = "../usr/lib/libevent-2.1.7.dylib"; sourceTree = "<group>"; };
+		BD99B4C1243B31560041CC7E /* libevent-2.1.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libevent-2.1.7.dylib"; path = "../usr/lib/libevent-2.1.7.dylib"; sourceTree = "<group>"; };
+		BDA1774A2486843C00B65FE0 /* hicnProxyWrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = hicnProxyWrapper.cpp; sourceTree = "<group>"; };
+		BDA1774B2486843C00B65FE0 /* hicnProxyWrapper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = hicnProxyWrapper.hpp; sourceTree = "<group>"; };
+		BDB531BF2435DEA400B5E741 /* libhicn.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libhicn.dylib; path = "../../../../usr/local/Cellar/hicn/20.01-90-g59c4e43/lib/libhicn.dylib"; sourceTree = "<group>"; };
+		BDB531C12435DF0E00B5E741 /* libparc.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libparc.1.0.dylib; path = "../../../../usr/local/Cellar/libparc/1.0-74~gae07b5e/lib/libparc.1.0.dylib"; sourceTree = "<group>"; };
+		BDB531D42435EC0B00B5E741 /* libhicntransport.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libhicntransport.dylib; path = "../../../../usr/local/Cellar/hicn/20.01-91-gd27d9b5/lib/libhicntransport.dylib"; sourceTree = "<group>"; };
+		BDB531D82435EC2D00B5E741 /* libhicn.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libhicn.dylib; path = "../../../../usr/local/Cellar/hicn/20.01-91-gd27d9b5/lib/libhicn.dylib"; sourceTree = "<group>"; };
+		BDE96066248694D500BF45B9 /* HttpProxyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpProxyViewController.swift; sourceTree = "<group>"; };
+		BDE96067248694D500BF45B9 /* HttpProxyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HttpProxyViewController.xib; sourceTree = "<group>"; };
+		BDF414F824341C58000EBB41 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BDF414FC2434267E000EBB41 /* RepeatingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimer.swift; sourceTree = "<group>"; };
+		BDF414FE24342A8F000EBB41 /* Hybrid ICN Network Service-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hybrid ICN Network Service-Bridging-Header.h"; sourceTree = "<group>"; };
+		BDF414FF24342A8F000EBB41 /* hiperfWrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = hiperfWrapper.cpp; sourceTree = "<group>"; };
+		BDF4150024342A8F000EBB41 /* hiperfWrapper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = hiperfWrapper.hpp; sourceTree = "<group>"; };
+		BDF41502243430E1000EBB41 /* hiperf.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = hiperf.cpp; sourceTree = "<group>"; };
+		BDF41503243430E1000EBB41 /* hiperf.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = hiperf.hpp; sourceTree = "<group>"; };
+		BDF41505243439F3000EBB41 /* forwarderWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = forwarderWrapper.h; sourceTree = "<group>"; };
+		BDF41506243439F3000EBB41 /* forwarderWrapper.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = forwarderWrapper.c; sourceTree = "<group>"; };
+		BDFC65CC2434910B00281643 /* Hybrid ICN Network Service.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Hybrid ICN Network Service.entitlements"; sourceTree = "<group>"; };
+		E161EB8C5BD6FF123E624578 /* Pods-Hybrid ICN Network Service.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hybrid ICN Network Service.debug.xcconfig"; path = "Target Support Files/Pods-Hybrid ICN Network Service/Pods-Hybrid ICN Network Service.debug.xcconfig"; sourceTree = "<group>"; };
+		E3194E4022573FF3006FE775 /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = util.swift; sourceTree = "<group>"; usesTabs = 1; };
+		E34E9EE720E6149B002F8F86 /* Hybrid ICN Network Service.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hybrid ICN Network Service.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E34E9EE920E6149B002F8F86 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; usesTabs = 1; };
+		E34E9EEB20E6149D002F8F86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E34E9EEE20E6149D002F8F86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		E34E9EF020E6149D002F8F86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E34E9EFE20E617E7002F8F86 /* HiperfViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HiperfViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
+		E34E9F0020E61A26002F8F86 /* HiperfViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HiperfViewController.xib; sourceTree = "<group>"; };
+		E34E9F0220E61BC0002F8F86 /* ForwarderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ForwarderViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
+		E34E9F0420E61C06002F8F86 /* ForwarderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForwarderViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E34E9EE420E6149B002F8F86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD5507C42488F203000B9A2F /* libhicnctrl.dylib in Frameworks */,
+				BD374F6824360E5800FC72EC /* libhicn.dylib in Frameworks */,
+				BD99B4C3243B34B00041CC7E /* libevent-2.1.7.dylib in Frameworks */,
+				BD374F6724360E4700FC72EC /* libhicntransport.dylib in Frameworks */,
+				BD374F6624360E3900FC72EC /* libparc.dylib in Frameworks */,
+				59492EE0552BA53F02423EC3 /* Pods_Hybrid_ICN_Network_Service.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4F500C75FFCFF965428DC469 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E161EB8C5BD6FF123E624578 /* Pods-Hybrid ICN Network Service.debug.xcconfig */,
+				38D27A3DDEDBD7004821F56A /* Pods-Hybrid ICN Network Service.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6C9DDC4BC63CF9FC6A10BC8C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BDB531D82435EC2D00B5E741 /* libhicn.dylib */,
+				BDB531D42435EC0B00B5E741 /* libhicntransport.dylib */,
+				BDB531C12435DF0E00B5E741 /* libparc.1.0.dylib */,
+				BDB531BF2435DEA400B5E741 /* libhicn.dylib */,
+				24CD9B1BB865F14F78815E0A /* Pods_Hybrid_ICN_Network_Service.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E34E9EE820E6149B002F8F86 /* Hybrid ICN Network Service */ = {
+			isa = PBXGroup;
+			children = (
+				BDFC65CC2434910B00281643 /* Hybrid ICN Network Service.entitlements */,
+				E34E9EE920E6149B002F8F86 /* AppDelegate.swift */,
+				502B68E52254944600789D9F /* PreferencesStyle+UserDefaults.swift */,
+				E34E9EED20E6149D002F8F86 /* MainMenu.xib */,
+				BDF41502243430E1000EBB41 /* hiperf.cpp */,
+				BD90564D248A496C00218BA2 /* CLIViewController.xib */,
+				BD90564F248A497400218BA2 /* CLIViewController.swift */,
+				BDE96066248694D500BF45B9 /* HttpProxyViewController.swift */,
+				BDE96067248694D500BF45B9 /* HttpProxyViewController.xib */,
+				BDF41503243430E1000EBB41 /* hiperf.hpp */,
+				E34E9EFE20E617E7002F8F86 /* HiperfViewController.swift */,
+				E34E9F0020E61A26002F8F86 /* HiperfViewController.xib */,
+				E34E9F0220E61BC0002F8F86 /* ForwarderViewController.swift */,
+				E34E9F0420E61C06002F8F86 /* ForwarderViewController.xib */,
+				E3194E4022573FF3006FE775 /* util.swift */,
+				E34E9EEB20E6149D002F8F86 /* Assets.xcassets */,
+				E34E9EF020E6149D002F8F86 /* Info.plist */,
+				BDF414F824341C58000EBB41 /* Constants.swift */,
+				BDF414FC2434267E000EBB41 /* RepeatingTimer.swift */,
+				BDF414FF24342A8F000EBB41 /* hiperfWrapper.cpp */,
+				BDF4150024342A8F000EBB41 /* hiperfWrapper.hpp */,
+				BDF414FE24342A8F000EBB41 /* Hybrid ICN Network Service-Bridging-Header.h */,
+				BDF41505243439F3000EBB41 /* forwarderWrapper.h */,
+				BDF41506243439F3000EBB41 /* forwarderWrapper.c */,
+				BDA1774A2486843C00B65FE0 /* hicnProxyWrapper.cpp */,
+				BDA1774B2486843C00B65FE0 /* hicnProxyWrapper.hpp */,
+				BD905651248A99BA00218BA2 /* StringTextView.swift */,
+				BD9781A5248AA9EC0027ABF4 /* hicnControllerWrapper.h */,
+				BD9781A6248AA9EC0027ABF4 /* hicnControllerWrapper.c */,
+			);
+			path = "Hybrid ICN Network Service";
+			sourceTree = "<group>";
+		};
+		OBJ_12 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E34E9EE720E6149B002F8F86 /* Hybrid ICN Network Service.app */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_5 = {
+			isa = PBXGroup;
+			children = (
+				BD5507C22488F1DE000B9A2F /* libhicnctrl.dylib */,
+				BD99B4BF243B1AAF0041CC7E /* libevent-2.1.7.dylib */,
+				BD99B4C1243B31560041CC7E /* libevent-2.1.7.dylib */,
+				BD99B4BB243B1A900041CC7E /* libcrypto.1.1.dylib */,
+				BD99B4BC243B1A900041CC7E /* libssl.1.1.dylib */,
+				BD99B4B9243B1A750041CC7E /* libparc.dylib */,
+				BD99B4B5243B1A400041CC7E /* libhicn.dylib */,
+				BD99B4B6243B1A400041CC7E /* libhicntransport.dylib */,
+				BD374F692436102D00FC72EC /* libevent-2.1.7.dylib */,
+				BD374F6424360E1F00FC72EC /* libhicntransport.dylib */,
+				BD374F6224360E0C00FC72EC /* libevent.dylib */,
+				BD374F6024360DF900FC72EC /* libcrypto.1.1.dylib */,
+				BD374F5E24360DEA00FC72EC /* libparc.dylib */,
+				BD374F5C24360DB300FC72EC /* libssl.1.1.dylib */,
+				BD374F5A24360D9B00FC72EC /* libhicn.dylib */,
+				E34E9EE820E6149B002F8F86 /* Hybrid ICN Network Service */,
+				OBJ_12 /* Products */,
+				4F500C75FFCFF965428DC469 /* Pods */,
+				6C9DDC4BC63CF9FC6A10BC8C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E34E9EE620E6149B002F8F86 /* Hybrid ICN Network Service */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E34E9EF220E6149D002F8F86 /* Build configuration list for PBXNativeTarget "Hybrid ICN Network Service" */;
+			buildPhases = (
+				B74ADC9027BAAD568B4E54B7 /* [CP] Check Pods Manifest.lock */,
+				E34E9EE320E6149B002F8F86 /* Sources */,
+				E34E9EE420E6149B002F8F86 /* Frameworks */,
+				E34E9EE520E6149B002F8F86 /* Resources */,
+				E34E9EF920E61508002F8F86 /* Embed Frameworks */,
+				BDB531C72435E04800B5E741 /* ShellScript */,
+				ADC83D24BB9771FC0F59D1A5 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Hybrid ICN Network Service";
+			productName = PreferencesExample;
+			productReference = E34E9EE720E6149B002F8F86 /* Hybrid ICN Network Service.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 1140;
+				TargetAttributes = {
+					E34E9EE620E6149B002F8F86 = {
+						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1140;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Hybrid ICN Network Service" */;
+			compatibilityVersion = "Xcode 11.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = OBJ_5;
+			productRefGroup = OBJ_12 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E34E9EE620E6149B002F8F86 /* Hybrid ICN Network Service */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E34E9EE520E6149B002F8F86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E34E9EEC20E6149D002F8F86 /* Assets.xcassets in Resources */,
+				E34E9F0520E61C06002F8F86 /* ForwarderViewController.xib in Resources */,
+				BDE96069248694D500BF45B9 /* HttpProxyViewController.xib in Resources */,
+				E34E9EEF20E6149D002F8F86 /* MainMenu.xib in Resources */,
+				E34E9F0120E61A26002F8F86 /* HiperfViewController.xib in Resources */,
+				BD90564E248A496C00218BA2 /* CLIViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ADC83D24BB9771FC0F59D1A5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hybrid ICN Network Service/Pods-Hybrid ICN Network Service-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Hybrid ICN Network Service/Pods-Hybrid ICN Network Service-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Hybrid ICN Network Service/Pods-Hybrid ICN Network Service-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B74ADC9027BAAD568B4E54B7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Hybrid ICN Network Service-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BDB531C72435E04800B5E741 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#!/bin/bash\nset -x\n\napp=\"$BUILT_PRODUCTS_DIR\"/\"$EXECUTABLE_PATH\"\nfw_path=\"$BUILT_PRODUCTS_DIR\"/\"$FRAMEWORKS_FOLDER_PATH\"\napp_dyl_list=(`ls \"$fw_path\" | grep dylib`)\n\n#echo \"-->\"$app_dyl_list\n#exit 1\nfunction change_paths {\n    local bin=$1\n    echo change_path \"$bin\"\n    dyl_list=(`otool -L \"$bin\" | grep local | awk '{print $1}'`)\n\n    for dyl in ${dyl_list[*]}; do\n        libname=$(basename $dyl)\n        libname=${libname%%.*}\n        actual_libname=(`ls \"$fw_path\" | grep $libname | xargs basename`)\n        install_name_tool -change \"$dyl\" @rpath/\"$actual_libname\" \"$bin\"\n        printf \"\\t%s edited\\n\" $actual_libname\n    done\n}\n\nchange_paths \"$app\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E34E9EE320E6149B002F8F86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDA1774C2486843C00B65FE0 /* hicnProxyWrapper.cpp in Sources */,
+				BDF41504243430E1000EBB41 /* hiperf.cpp in Sources */,
+				BD905650248A497400218BA2 /* CLIViewController.swift in Sources */,
+				E34E9EFF20E617E7002F8F86 /* HiperfViewController.swift in Sources */,
+				BDF41507243439F3000EBB41 /* forwarderWrapper.c in Sources */,
+				BDF4150124342A8F000EBB41 /* hiperfWrapper.cpp in Sources */,
+				E34E9EEA20E6149B002F8F86 /* AppDelegate.swift in Sources */,
+				E34E9F0320E61BC0002F8F86 /* ForwarderViewController.swift in Sources */,
+				E3194E4122573FF3006FE775 /* util.swift in Sources */,
+				BD905652248A99BA00218BA2 /* StringTextView.swift in Sources */,
+				502B68E72254947B00789D9F /* PreferencesStyle+UserDefaults.swift in Sources */,
+				BDE96068248694D500BF45B9 /* HttpProxyViewController.swift in Sources */,
+				BDF414FD2434267E000EBB41 /* RepeatingTimer.swift in Sources */,
+				BDF414F924341C58000EBB41 /* Constants.swift in Sources */,
+				BD9781A7248AA9EC0027ABF4 /* hicnControllerWrapper.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E34E9EED20E6149D002F8F86 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E34E9EEE20E6149D002F8F86 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E34E9EF320E6149D002F8F86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E161EB8C5BD6FF123E624578 /* Pods-Hybrid ICN Network Service.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Hybrid ICN Network Service/Hybrid ICN Network Service.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 11;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 48JBYTLGAT;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Hybrid ICN Network Service/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = ../usr/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0.6;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Charts\"",
+					"-framework",
+					"\"Preferences\"",
+					"-lhicn-light",
+					"-lhicnhttpproxy",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cisco.hicn.HicnForwarder.Hybrid-ICN-Network-Service";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "Hybrid ICN Network Service/Hybrid ICN Network Service-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../usr/include",
+					/usr/local/include,
+				);
+			};
+			name = Debug;
+		};
+		E34E9EF420E6149D002F8F86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38D27A3DDEDBD7004821F56A /* Pods-Hybrid ICN Network Service.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Hybrid ICN Network Service/Hybrid ICN Network Service.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 11;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 48JBYTLGAT;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Hybrid ICN Network Service/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = ../usr/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Charts\"",
+					"-framework",
+					"\"Preferences\"",
+					"-lhicn-light",
+					"-lhicnhttpproxy",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cisco.hicn.HicnForwarder.Hybrid-ICN-Network-Service";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Hybrid ICN Network Service/Hybrid ICN Network Service-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				SYSTEM_HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../usr/include",
+					/usr/local/include,
+				);
+			};
+			name = Release;
+		};
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HEADERMAP = NO;
+				VALID_ARCHS = x86_64;
+			};
+			name = Debug;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				USE_HEADERMAP = NO;
+				VALID_ARCHS = x86_64;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E34E9EF220E6149D002F8F86 /* Build configuration list for PBXNativeTarget "Hybrid ICN Network Service" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E34E9EF320E6149D002F8F86 /* Debug */,
+				E34E9EF420E6149D002F8F86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_2 /* Build configuration list for PBXProject "Hybrid ICN Network Service" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = OBJ_1 /* Project object */;
+}

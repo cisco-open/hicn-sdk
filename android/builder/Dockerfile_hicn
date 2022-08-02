@@ -1,0 +1,10 @@
+ARG DOCKER_IMAGE
+
+FROM ${DOCKER_IMAGE}
+
+MAINTAINER Angelo Mantellini <manangel@cisco.com>
+
+COPY scripts_hicn scripts_hicn
+
+RUN ls /opt
+RUN bash scripts_hicn/compile_hicn.sh

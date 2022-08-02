@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hproxy_connected">HProxy is connected!</string>
+    <string name="hproxy_disconnected">HProxy is disconnected!</string>
+    <string name="hproxy_server_key">hproxy_server_key</string>
+    <string name="hproxy_server_port_key">hproxy_server_port_key</string>
+    <string name="default_hproxy_server">10.20.30.40</string>
+    <string name="default_hproxy_server_port">5003</string>
+    <string name="hproxy_secret_key">hproxy_secret_key</string>
+    <string name="default_hproxy_secret">SECRET</string>
+    <string name="hproxy_connecting">HProxy is connecting...</string>
+    <string name="hproxy_disconnect">Disconnect!</string>
+    <string name="not_found">not found</string>
+    <string name="cache_size_key">cache_size</string>
+    <string name="default_cache_size">0</string>
+    <string name="forwarder_log_level_key">forwarder_log_level_key</string>
+    <string name="forwarder_default_log_level">0</string>
+    <string name="pref_hproxy_force_vpn_key">pref_hproxy_force_vpn_key</string>
+    <string name="pref_hproxy_force_vpn_default">false</string>
+    <string name="pref_hproxy_disable_sd_key">pref_hproxy_disable_sd_key</string>
+    <string name="pref_hproxy_disable_sd_default">false</string>
+    <string name="pref_hproxy_server_key">pref_hproxy_server_key</string>
+    <string name="pref_hproxy_server_default">127.0.0.1</string>
+    <string name="pref_hproxy_port_key">pref_hproxy_port_key</string>
+    <string name="pref_hproxy_port_default">33437</string>
+    <string name="httpproxy_prefix_key">httpproxy_prefix_key</string>
+</resources>

@@ -1,0 +1,431 @@
+<!--
+    Copyright (c) 2019 Cisco and/or its affiliates.
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at:
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<resources>
+    <string name="app_name">Hybrid ICN Network Service</string>
+    <string name="source">Source</string>
+    <string name="source_ip">IP</string>
+    <string name="source_port">Port</string>
+
+    <string name="next_hop">Next Hop</string>
+    <string name="next_hop_ip">IP</string>
+    <string name="next_hop_port">Port</string>
+
+    <string name="route">Route</string>
+    <string name="prefix">Prefix</string>
+    <string name="netmask">Netmask</string>
+
+    <string name="configuration">Configuration</string>
+    <string name="capacity">Capacity [bytes]</string>
+    <string name="APP_MENU_FACES">Faces</string>
+
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
+
+    <string name="cache_size_summary">Cache Size</string>
+
+    <string name="cache_size_title">Cache Size</string>
+    <string name="cache_size_key">cache_size</string>
+    <string name="default_cache_size">0</string>
+
+    <string name="forwarder_preference_category">Forwarder</string>
+    <string name="face_management_preference_category">Face Management</string>
+    <string name="face_type_key">face_type</string>
+    <string name="default_face_type">Overlay UDP</string>
+    <string name="face_type_list_preference">Face Type</string>
+    <string name="native_tcp">Native TCP</string>
+    <string name="native_udp">Native UDP</string>
+    <string name="overlay_tcp">Overlay TCP</string>
+    <string name="overlay_udp">Overlay UDP</string>
+    <string name="overlay_discovery_list_preference">Overlay Discovery</string>
+    <string name="manual">Manual</string>
+    <string name="bonjour">Bonjour</string>
+    <string name="overlay_discovery_key">overlay_discovery</string>
+    <string name="default_overlay_discovery">Manual</string>
+    <string name="overlay_manual_configuration_preference_category">Overlay Manual Configuration</string>
+    <string name="nexthop_address_ipv4">Next Hop Address IPv4</string>
+    <string name="nexthop_port_ipv4">Next Hop Port IPv4</string>
+    <string name="nexthop_address_ipv4_key">nexthop_address_ipv4</string>
+    <string name="enable_nexthop_ipv4_key">enable_nexthop_ipv4</string>
+    <string name="enable_nexthop_ipv6_key">enable_nexthop_ipv6</string>
+    <string name="enable_nexthop_ipv4">aaaa</string>
+
+
+    <string name="nexthop_port_ipv4_key">nexthop_port_ipv4</string>
+    <string name="nexthop_address_ipv6">Next Hop Address IPv6</string>
+    <string name="nexthop_address_ipv6_key">nexthop_address_ipv6</string>
+    <string name="nexthop_port_ipv6">Next HopPort IPv6</string>
+    <string name="nexthop_port_ipv6_key">port_ipv6</string>
+
+    <string name="forwarder">Forwarder</string>
+    <string name="interfaces">Interfaces</string>
+    <string name="applications">Applications</string>
+    <string name="hicn_is_disabled">hICN is Disabled</string>
+    <string name="wifi">WiFi</string>
+    <string name="radio">Radio</string>
+    <string name="wired">Wired</string>
+    <string name="default_ipv4">10.20.30.40</string>
+    <string name="default_ipv6">ffff::1</string>
+    <string name="default_port">9695</string>
+
+    <!--Fragment titles-->
+    <string name="preferences">Preferences</string>
+    <string name="leanback_preferences">Leanback Preferences</string>
+    <string name="car_preferences">Car Preferences</string>
+
+    <!--This section is for basic attributes -->
+    <string name="basic_preferences">Basic attributes</string>
+
+    <string name="title_basic_preference">Preference</string>
+    <string name="summary_basic_preference">Simple preference with no special attributes</string>
+
+    <string name="title_stylish_preference"><b>Very</b> <i>stylish</i> <u>preference</u></string>
+    <string name="summary_stylish_preference">Define style tags such as &lt;b&gt; in a string resource to customize a preference\'s text</string>
+
+    <string name="title_icon_preference">Icon preference</string>
+    <string name="summary_icon_preference">Define a drawable to display it at the start of the preference</string>
+
+    <string name="title_single_line_title_preference">Single line title preference - no matter how long the title is it will never wrap to multiple lines</string>
+    <string name="summary_single_line_title_preference">This title will be ellipsized instead of wrapping to another line</string>
+
+    <!--This section is for preferences that contain a widget in their layout -->
+    <string name="widgets">Widgets</string>
+
+    <string name="title_checkbox_preference">Checkbox preference</string>
+    <string name="summary_checkbox_preference">Tap anywhere in this preference to toggle state</string>
+
+    <string name="title_switch_preference">Switch preference</string>
+    <string name="summary_switch_preference">Tap anywhere in this preference to toggle state</string>
+
+    <string name="title_dropdown_preference">Dropdown preference</string>
+
+    <string name="title_seekbar_preference">Seekbar preference</string>
+
+    <!--This section is for preferences that launch a dialog to edit the preference -->
+    <string name="dialogs">Dialogs</string>
+
+    <string name="title_edittext_preference">EditText preference</string>
+    <string name="dialog_title_edittext_preference">This title can be changed!</string>
+
+    <string name="title_list_preference">List preference</string>
+    <string name="dialog_title_list_preference">Choose one option!</string>
+
+    <string name="title_multi_list_preference">Multi-select list preference</string>
+    <string name="summary_multi_list_preference">Shows a dialog with multiple choice options</string>
+    <string name="dialog_title_multi_list_preference">Choose some options!</string>
+
+    <!--This section is for wifi attributes-->
+    <string name="advanced_attributes">Advanced attributes</string>
+
+    <string name="title_expandable_preference">Expandable preference group</string>
+    <string name="summary_expandable_preference">This group shows one item and collapses the rest into the advanced button below</string>
+
+    <string name="title_intent_preference">Intent preference</string>
+    <string name="summary_intent_preference">Launches an intent when pressed</string>
+
+    <string name="title_parent_preference">Parent preference</string>
+    <string name="summary_parent_preference">Toggling this preference will change the enabled state of the preference below</string>
+
+    <string name="title_child_preference">Child preference</string>
+    <string name="summary_child_preference">The enabled state of this preference is controlled by the preference above</string>
+
+    <string name="title_toggle_summary_preference">Variable summary preference</string>
+    <string name="summary_on_toggle_summary_preference">On! :) - the summary of this preference changes depending on its state</string>
+    <string name="summary_off_toggle_summary_preference">Off! :( - the summary of this preference changes depending on its state</string>
+
+    <string name="title_copyable_preference">Copyable preference</string>
+    <string name="summary_copyable_preference">Long press on this preference to copy its summary</string>
+    <string name="wifi_preference_title">WiFi Configuration</string>
+    <string name="wifi_preference_summary">Configure WiFi Parameters</string>
+    <string name="cellular_preference_title">Cellular Configuration</string>
+    <string name="cellular_preference_summary">Configure Cellular Parameters</string>
+    <string name="wired_preference_title">Wired Configuration</string>
+    <string name="wired_preference_summary">Configure Wired Parameters</string>
+    <string name="enable_nexthop_ipv4_summary">Enable IPv4</string>
+    <string name="enable_nexthop_ipv4_title">Enable IPv4</string>
+    <string name="enable_nexthop_ipv6_summary">Enable IPv6</string>
+    <string name="enable_nexthop_ipv6_title">Enable IPv6</string>
+    <string name="wifi_preferences_summary">Configure IPv4</string>
+    <string name="wifi_preferences_title">Configure IPv4</string>
+    <string name="wifi_ipv4_preferences_summary">Configure IPv4</string>
+    <string name="wifi_ipv4_preferences_title">Configure IPv4</string>
+    <string name="wifi_ipv6_preferences_summary">Configure IPv6</string>
+    <string name="wifi_ipv6_preferences_title">Configure IPv6</string>
+    <string name="cellular_ipv4_preferences_summary">Configure IPv4</string>
+    <string name="cellular_ipv4_preferences_title">Configure IPv4</string>
+    <string name="cellular_ipv6_preferences_summary">Configure IPv6</string>
+    <string name="cellular_ipv6_preferences_title">Configure IPv6</string>
+    <string name="wired_ipv4_preferences_summary">Configure IPv4</string>
+    <string name="wired_ipv4_preferences_title">Configure IPv4</string>
+    <string name="wired_ipv6_preferences_summary">Configure IPv6</string>
+    <string name="wired_ipv6_preferences_title">Configure IPv6</string>
+    <string name="wifi_ipv4_preferences_key">wifi_ipv4_preferences_key</string>
+    <string name="wifi_ipv6_preferences_key">wifi_ipv6_preferences_key</string>
+    <string name="cellular_ipv4_preferences_key">cellular_ipv4_preferences_key</string>
+    <string name="cellular_ipv6_preferences_key">cellular_ipv6_preferences_key</string>
+    <string name="wired_ipv4_preferences_key">wired_ipv4_preferences_key</string>
+    <string name="wired_ipv6_preferences_key">wired_ipv6_preferences_key</string>
+    <string name="enable_bonjour_summary">Enable Bonjour</string>
+    <string name="enable_bonjour_title">Enable Bonjour</string>
+    <string name="enable_bonjour_key">enable_bonjour_key</string>
+
+
+    <string name="wifi_ipv4_preference_title">WiFi IPv4</string>
+    <string name="default_wifi_source_port_ipv4">9695</string>
+    <string name="wifi_source_port_ipv4_key">wifi_source_port_ipv4_key</string>
+    <string name="wifi_source_port_ipv4_summary">Source Port</string>
+    <string name="wifi_source_port_ipv4_title">Source Port</string>
+    <string name="default_wifi_nexthop_ipv4">10.20.30.40</string>
+    <string name="wifi_nexthop_ipv4_key">wifi_nexthop_ipv4_key</string>
+    <string name="wifi_nexthop_ipv4_summary">Next Hop</string>
+    <string name="wifi_nexthop_ipv4_title">Next Hop</string>
+    <string name="default_wifi_nexthop_port_ipv4">9695</string>
+    <string name="wifi_nexthop_port_ipv4_key">wifi_nexthop_port_ipv4_key</string>
+    <string name="wifi_nexthop_port_ipv4_summary">Next Hop Port</string>
+    <string name="wifi_nexthop_port_ipv4_title">Next Hop Port</string>
+
+
+
+    <string name="wifi_ipv6_preference_title">WiFi IPv6</string>
+    <string name="default_wifi_source_port_ipv6">9695</string>
+    <string name="wifi_source_port_ipv6_key">wifi_source_port_ipv6_key</string>
+    <string name="wifi_source_port_ipv6_summary">Source Port</string>
+    <string name="wifi_source_port_ipv6_title">Source Port</string>
+    <string name="default_wifi_nexthop_ipv6">ff::1</string>
+    <string name="wifi_nexthop_ipv6_key">wifi_nexthop_ipv6_key</string>
+    <string name="wifi_nexthop_ipv6_summary">Next Hop</string>
+    <string name="wifi_nexthop_ipv6_title">Next Hop</string>
+    <string name="default_wifi_nexthop_port_ipv6">9695</string>
+    <string name="wifi_nexthop_port_ipv6_key">wifi_nexthop_port_ipv6_key</string>
+    <string name="wifi_nexthop_port_ipv6_summary">Next Hop Port</string>
+    <string name="wifi_nexthop_port_ipv6_title">Next Hop Port</string>
+    <string name="wifi_key">wifi_key</string>
+    <string name="cellular_key">cellular_key</string>
+
+
+    <string name="cellular_ipv4_preference_title">Cellular IPv4</string>
+    <string name="default_cellular_source_port_ipv4">9695</string>
+    <string name="cellular_source_port_ipv4_key">cellular_source_port_ipv4_key</string>
+    <string name="cellular_source_port_ipv4_summary">Source Port</string>
+    <string name="cellular_source_port_ipv4_title">Source Port</string>
+    <string name="default_cellular_nexthop_ipv4">10.20.30.40</string>
+    <string name="cellular_nexthop_ipv4_key">cellular_nexthop_ipv4_key</string>
+    <string name="cellular_nexthop_ipv4_summary">Next Hop</string>
+    <string name="cellular_nexthop_ipv4_title">Next Hop</string>
+    <string name="default_cellular_nexthop_port_ipv4">9695</string>
+    <string name="cellular_nexthop_port_ipv4_key">cellular_nexthop_port_ipv4_key</string>
+    <string name="cellular_nexthop_port_ipv4_summary">Next Hop Port</string>
+    <string name="cellular_nexthop_port_ipv4_title">Next Hop Port</string>
+
+
+
+    <string name="cellular_ipv6_preference_title">Cellular IPv6</string>
+    <string name="default_cellular_source_port_ipv6">9695</string>
+    <string name="cellular_source_port_ipv6_key">cellular_source_port_ipv6_key</string>
+    <string name="cellular_source_port_ipv6_summary">Source Port</string>
+    <string name="cellular_source_port_ipv6_title">Source Port</string>
+    <string name="default_cellular_nexthop_ipv6">ff::1</string>
+    <string name="cellular_nexthop_ipv6_key">cellular_nexthop_ipv6_key</string>
+    <string name="cellular_nexthop_ipv6_summary">Next Hop</string>
+    <string name="cellular_nexthop_ipv6_title">Next Hop</string>
+    <string name="default_cellular_nexthop_port_ipv6">9695</string>
+    <string name="cellular_nexthop_port_ipv6_key">cellular_nexthop_port_ipv6_key</string>
+    <string name="cellular_nexthop_port_ipv6_summary">Next Hop Port</string>
+    <string name="cellular_nexthop_port_ipv6_title">Next Hop Port</string>
+
+    <string name="wired_ipv4_preference_title">Wired IPv4</string>
+    <string name="default_wired_source_port_ipv4">9695</string>
+    <string name="wired_source_port_ipv4_key">wired_source_port_ipv4_key</string>
+    <string name="wired_source_port_ipv4_summary">Source Port</string>
+    <string name="wired_source_port_ipv4_title">Source Port</string>
+    <string name="default_wired_nexthop_ipv4">10.20.30.40</string>
+    <string name="wired_nexthop_ipv4_key">wired_nexthop_ipv4_key</string>
+    <string name="wired_nexthop_ipv4_summary">Next Hop</string>
+    <string name="wired_nexthop_ipv4_title">Next Hop</string>
+    <string name="default_wired_nexthop_port_ipv4">9695</string>
+    <string name="wired_nexthop_port_ipv4_key">wired_nexthop_port_ipv4_key</string>
+    <string name="wired_nexthop_port_ipv4_summary">Next Hop Port</string>
+    <string name="wired_nexthop_port_ipv4_title">Next Hop Port</string>
+
+
+
+    <string name="wired_ipv6_preference_title">Wired IPv6</string>
+    <string name="default_wired_source_port_ipv6">9695</string>
+    <string name="wired_source_port_ipv6_key">wired_source_port_ipv6_key</string>
+    <string name="wired_source_port_ipv6_summary">Source Port</string>
+    <string name="wired_source_port_ipv6_title">Source Port</string>
+    <string name="default_wired_nexthop_ipv6">ff::1</string>
+    <string name="wired_nexthop_ipv6_key">wired_nexthop_ipv6_key</string>
+    <string name="wired_nexthop_ipv6_summary">Next Hop</string>
+    <string name="wired_nexthop_ipv6_title">Next Hop</string>
+    <string name="default_wired_nexthop_port_ipv6">9695</string>
+    <string name="wired_nexthop_port_ipv6_key">wired_nexthop_port_ipv6_key</string>
+    <string name="wired_nexthop_port_ipv6_summary">Next Hop Port</string>
+    <string name="wired_nexthop_port_ipv6_title">Next Hop Port</string>
+    <string name="enable_wifi_key">enable_wifi_key</string>
+    <string name="enable_wifi_title">Manual Configuration</string>
+    <string name="enable_cellular_title">Manual Configuration</string>
+    <string name="enable_wired_title">Manual Configuration</string>
+    <string name="enable_cellular_key">enable_cellular_key</string>
+    <string name="enable_wired_key">enable_wired_key</string>
+
+    <string name="checkbox_true">true</string>
+    <string name="hiperf">hIperf</string>
+
+
+
+    <string name="hiperf_hicn_name">HICN Name</string>
+    <string name="default_hiperf_hicn_name">b001::1</string>
+
+    <string name="hiperf_raaqm_beta_parameter">RAAQM Beta</string>
+    <string name="hiperf_raaqm_drop_factor_parameter">RAAQM Drop Factor</string>
+    <string name="hiperf_fixed_window_size">Fixed Window Size</string>
+    <string name="hiperf_window_size">Window Size</string>
+    <string name="hiperf_stats_interval">Stats Interval[ms]</string>
+    <string name="hiperf_rtc_protocol">Rtc Protocol</string>
+    <string name="hiperf_start_button">Start</string>
+    <string name="hiperf_stop_button">Stop</string>
+    <string name="hiperf_autoscroll">Autoscroll</string>
+    <string name="hiperf_more_options">More Options</string>
+    <string name="hiperf_hide_options">Hide Options</string>
+    <string name="hiperf_cancel_log_button">Cancel</string>
+    <string name="hiperf_shared_preferences">hiperf_shared_preferences</string>
+    <string name="hiperf_hicn_name_key">hiperf_hicn_name_key</string>
+    <string name="hiperf_raaqm_beta_parameter_key">hiperf_raaqm_beta_parameter_key</string>
+    <string name="hiperf_raaqm_drop_factor_parameter_key">hiperf_raaqm_drop_factor_parameter_key</string>
+    <string name="hiperf_fixed_window_size_key">hiperf_fixed_window_size_key</string>
+    <string name="hiperf_window_size_key">hiperf_window_size_key</string>
+    <string name="hiperf_rtc_protocol_key">hiperf_rtc_protocol_key</string>
+    <string name="hiperf_stats_interval_key">hiperf_stats_interval_key</string>
+    <string name="hiperf_log_autosroll_key">hiperf_log_autoscroll_key</string>
+    <string name="hiper_category">hIperf</string>
+    <string name="hiperf_preferences_title">hIperf Configuration</string>
+    <string name="hiperf_preferences_summary">Configure hIperf Parameters</string>
+    <string name="hiperf_raaqm_beta_key">hiperf_raaqm_beta_key</string>
+    <string name="default_hiperf_raaqm_beta">0.99</string>
+    <string name="hiperf_raaqm_beta_summary">RAAQM Beta</string>
+    <string name="hiperf_raaqm_beta_title">RAAQM Beta</string>
+    <string name="default_hiperf_raaqm_drop_factor">0.003</string>
+    <string name="hiperf_raaqm_drop_factor_key">hiperf_raaqm_drop_factor_key</string>
+    <string name="hiperf_raaqm_drop_factor_summary">RAAQM Drop Factor</string>
+    <string name="hiperf_raaqm_drop_factor_title">RAAQM Drop Factor</string>
+    <string name="checkbox_false">false</string>
+    <string name="enable_hiperf_window_size_key">enable_hiperf_window_size_key</string>
+    <string name="enable_hiperf_window_size_title">Fixed Window Size</string>
+    <string name="enable_hiperf_rtc_protocol_key">enable_hiperf_rtc_protocol_key</string>
+    <string name="enable_hiperf_rtc_protocol_title">RTC Protocol</string>
+    <string name="default_hiperf_window_size">10</string>
+    <string name="hiperf_window_size_summary">Window Size</string>
+    <string name="hiperf_window_size_title">Window Size</string>
+    <string name="disabled">Disabled</string>
+    <string name="enabled">Enabled</string>
+    <string name="hproxy_category">HProxy</string>
+    <string name="hproxy_preferences_summary">Configure HProxy Parameters</string>
+    <string name="hproxy_preferences_title">HProxy Configuration</string>
+    <string name="hproxy_connecting">HProxy is connecting...</string>
+    <string name="hproxy_connected">HProxy is connected!</string>
+    <string name="hproxy_disconnected">HProxy is disconnected!</string>
+    <string name="hproxy_disconnect">Disconnect!</string>
+    <string name="default_hproxy_dns_server">8.8.8.8</string>
+    <string name="hproxy_dns_server_key">hproxy_dns_server_key</string>
+    <string name="hproxy_dns_server_summary">DNS Server</string>
+    <string name="hproxy_dns_server_title">DNS Server</string>
+    <string name="hproxy_secret_title">Secret</string>
+    <string name="hproxy_secret_summary">Secret</string>
+    <string name="hproxy_secret_key">hproxy_secret_key</string>
+    <string name="default_hproxy_secret">SECRET</string>
+    <string name="hproxy_producer_name_title">Producer Name</string>
+    <string name="hproxy_producer_name_summary">Producer Name</string>
+    <string name="hproxy_producer_name_key">hproxy_producer_name_key</string>
+    <string name="default_hproxy_producer_name">c001::1</string>
+    <string name="default_hproxy_consumer_name">b001::1</string>
+    <string name="hproxy_consumer_name_key">hproxy_consumer_name_key</string>
+    <string name="hproxy_consumer_name_summary">Consumer Name</string>
+    <string name="hproxy_consumer_name_title">Consumer Name</string>
+    <string name="interface_device">Device:</string>
+    <string name="interface_device_type">Type:</string>
+    <string name="interface_family">Family:</string>
+    <string name="interface_face_type">Face Type:</string>
+    <string name="interface_local_add">Local Addr:</string>
+    <string name="interface_local_port">Local Port:</string>
+    <string name="interface_remote_addr">Remote Addr:</string>
+    <string name="interface_remote_port">Remote Port:</string>
+    <string name="interface_status">Status:</string>
+    <string name="interface_error">Error:</string>
+    <string name="interface_show_all">Show All</string>
+    <string name="default_interface_showall">false</string>
+    <string name="interface_showall_key">interface_showall_key</string>
+    <string name="default_hiperf_interest_lifetime">1000</string>
+    <string name="hiperf_interest_lifetime_key">hiperf_interest_lifetime_key</string>
+    <string name="hiperf_interest_lifetime_summary">Interest LIfetime [ms]</string>
+    <string name="hiperf_interest_lifetime_title">Interest LIfetime [ms]</string>
+    <string name="forwarder_log_level_key">forwarder_log_level_key</string>
+    <string name="forwarder_log_level_title">Log Level</string>
+    <string name="forwarder_default_log_level">0</string>
+    <string name="facemgr_default_log_level">3</string>
+    <string name="interface_id">ID</string>
+    <string name="not_found">not found</string>
+    <string name="facemgr_log_level_title">Log Level</string>
+    <string name="facemgr_log_level_key">facemgr_log_level_key</string>
+    <string name="httpproxy_category">Http Proxy</string>
+    <string name="httpproxy_preferences_title">Http Proxy Configuration</string>
+    <string name="httpproxy_preferences_summary">Configure Http Proxy Parameters</string>
+    <string name="default_httpproxy_listeningport">9091</string>
+    <string name="httpproxy_listeningport_key">httpproxy_listeningport_key</string>
+    <string name="httpproxy_listeningport_summary">Listening Port</string>
+    <string name="httpproxy_listeningport_title">Listening Port</string>
+    <string name="default_httpproxy_prefix">http://webserver</string>
+    <string name="httpproxy_prefix_key">httpproxy_prefix_key</string>
+    <string name="httpproxy_prefix_summary">Prefix</string>
+    <string name="httpproxy_prefix_title">Prefix</string>
+
+    <string name="pref_hproxy_force_vpn_key">pref_hproxy_force_vpn_key</string>
+    <string name="pref_hproxy_force_vpn_default">false</string>
+    <string name="pref_hproxy_force_vpn_title">Force VPN framework usage</string>
+    <string name="pref_hproxy_force_vpn_summary">Ignore native support APIs</string>
+
+    <string name="pref_hproxy_disable_sd_key">pref_hproxy_disable_sd_key</string>
+    <string name="pref_hproxy_disable_sd_default">false</string>
+    <string name="pref_hproxy_disable_sd_title">Disable service discovery</string>
+    <string name="pref_hproxy_disable_sd_summary">Use specified proxy address/port</string>
+
+    <string name="pref_hproxy_server_key">pref_hproxy_server_key</string>
+    <string name="pref_hproxy_server_default">127.0.0.1</string>
+    <string name="pref_hproxy_server_title">Proxy server hostname</string>
+    <string name="pref_hproxy_server_summary">This will bypass Service discovery</string>
+
+    <string name="pref_hproxy_port_key">pref_hproxy_port_key</string>
+    <string name="pref_hproxy_port_default">33437</string>
+    <string name="pref_hproxy_port_title">Proxy server port</string>
+    <string name="pref_hproxy_port_summary">This will bypass Service discovery</string>
+
+    <string name="hicn_services">hICN services</string>
+    <string name="face_manager">Face Manager</string>
+    <string name="auto">AUTO</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+    <string name="empty"></string>
+    <string name="webex_proxy">Webex proxy</string>
+    <string name="http_proxy">HTTP proxy</string>
+    <string name="todo">TODO</string>
+    <string name="application_switch">Switch</string>
+    <string name="application_name">Application Name</string>
+    <string name="package_name">package.name</string>
+    <string name="action_search">Search</string>
+
+</resources>

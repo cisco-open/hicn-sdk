@@ -1,0 +1,91 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.2.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 28
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    libraryVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFileName = "hproxy-${variant.name}-v${defaultConfig.versionCode}-${defaultConfig.versionName}.aar"
+        }
+    }
+
+}
+
+def enableHProxy() {
+    if ("${getProjectProperty('ENABLE_HPROXY')}".toInteger() == 1)
+        return "-DENABLE_HPROXY=1"
+    else
+        return "-DENABLE_HPROXY=0"
+}
+
+def getVersionCode_() {
+
+    if ("${getProjectProperty('VERSION_CODE')}".isEmpty())
+        return 5
+    else {
+        return "${getProjectProperty('VERSION_CODE')}".toInteger()
+    }
+}
+
+def getVersion() {
+
+    if ("${getProjectProperty('VERSION')}".isEmpty())
+        return "1.0"
+    else {
+        return "1." + "${getProjectProperty('VERSION')}"
+    }
+}
+
+def String getProjectProperty(String propertyName)
+{
+    String value = "1"
+    if (hasProperty(propertyName))
+    {
+        value = this.properties[propertyName]
+    }
+    return value
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

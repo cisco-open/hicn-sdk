@@ -1,0 +1,7 @@
+include ':hproxyLibrary'
+include ':semtun-manager'
+include ':hproxyLibrarySrc'
+include ':app'
+include ':aar:common'
+include ':aar:facemgrLibrary'
+include ':aar:hicnforwarderLibrary'
