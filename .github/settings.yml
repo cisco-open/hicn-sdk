@@ -11,7 +11,7 @@ repository:
   homepage: ''
 
   # Updates the default branch for this repository.
-  default_branch: init/new-repo
+  default_branch: main
 
   # Either `true` to enable automated security fixes, or `false` to disable
   # automated security fixes.
@@ -39,7 +39,7 @@ teams:
 collaborators: []
 
 branches:
-  - name: init/new-repo
+  - name: main
     # https://docs.github.com/en/rest/reference/repos#update-branch-protection
     # Branch Protection settings. Set to null to disable
     protection:
