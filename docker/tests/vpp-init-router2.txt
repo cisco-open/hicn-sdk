@@ -1,0 +1,11 @@
+create host-interface name eth0
+create host-interface name eth1
+
+set interface state host-eth0 up
+set interface state host-eth1 up
+
+set int ip address host-eth0 10.21.0.3/16
+set int ip address host-eth1 10.31.0.2/16
+
+lcp create host-eth0 host-if e0
+lcp create host-eth1 host-if e1

@@ -1,0 +1,90 @@
+version: "3"
+services:
+  host1:
+    build:
+      context: .
+      dockerfile: Dockerfile.host
+    container_name: host1
+    hostname: host1
+    volumes:
+      - .:/workspace
+    networks:
+      - net1
+    init: true
+    privileged: true
+#    entrypoint: [/bin/bash, -ex, -c]
+    command:
+      - route add default gw 10.1.0.3
+      - route del default gw 10.1.0.1
+      - tail -f /dev/null
+  host2:
+    build:
+      context: .
+      dockerfile: Dockerfile.host
+    container_name: host2
+    hostname: host2
+    volumes:
+      - .:/workspace
+    networks:
+      - net3
+    init: true
+    privileged: true
+#    entrypoint: [/bin/bash, -ex, -c]
+    command:
+      - route add default gw 10.3.0.3
+      - route del default gw 10.3.0.1
+      - tail -f /dev/null
+  router1:
+    build:
+      context: .
+      dockerfile: Dockerfile.router
+      args:
+        ROUTER: 1
+    container_name: router1
+    hostname: router1
+    volumes:
+      - .:/workspace
+    networks:
+      - net1
+      - net2
+    privileged: true
+    depends_on:
+      - "host1"
+      - "host2"
+  router2:
+    build:
+      context: .
+      dockerfile: Dockerfile.router
+      args:
+        ROUTER: 2
+    container_name: router2
+    hostname: router2
+    volumes:
+      - .:/workspace
+    networks:
+      - net2
+      - net3
+    privileged: true
+    depends_on:
+      - "host1"
+      - "host2"
+      - "router1"
+networks:
+  net1:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.1.0.0/16
+  net2:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.2.0.0/16
+  net3:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.3.0.0/16
