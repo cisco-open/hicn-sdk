@@ -1,18 +1,3 @@
-#############################################################################
-# Copyright (c) 2022 Cisco and/or its affiliates.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at:
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-##############################################################################
-
 #!/bin/bash
 set -e
 ENABLE_DEBUG="NODEBUG"
@@ -37,9 +22,10 @@ while getopts ":d:v:u:t:r:" opt; do
   esac
 done
 
-cd aar_modules/FaceMgrLibrary
+cd hicn-aar/FaceMgrLibrary
 if [ ! -f local.properties ]; then
 	echo sdk.dir=${SDK} > local.properties
+  echo ndk.dir=${NDK} >> local.properties
 fi
 
 if [ "$ENABLE_DEBUG" = "DEBUG" ]; then
@@ -49,9 +35,9 @@ else
 fi
 
 if [ "$MVN_REPO" = "" ]; then
-    ./gradlew $ASSEMBLE -PVERSION=$VERSION_CODE -PGITHUB_USER=$GITHUB_USER -PGITHUB_TOKEN=$GITHUB_TOKEN
+    ./gradlew $ASSEMBLE -PVERSION=$VERSION_CODE
 else
-    ./gradlew $ASSEMBLE -PENABLE_HPROXY=$ENABLE_HPROXY -PVERSION=$VERSION_CODE -PGITHUB_USER=$GITHUB_USER -PGITHUB_TOKEN=$GITHUB_TOKEN -PMVN_REPO=$MVN_REPO
+    ./gradlew $ASSEMBLE -PENABLE_HPROXY=$ENABLE_HPROXY
 fi
 
 cd ..

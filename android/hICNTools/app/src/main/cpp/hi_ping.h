@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Cisco and/or its affiliates.
+ * Copyright (c) 2019 Cisco and/or its affiliates.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at:
@@ -91,7 +91,7 @@ namespace transport {
 
                 void onContentObject(Interest &interest, ContentObject &object)  override;
 
-                void onTimeout(core::Interest::Ptr &i, const core::Name &n) override;
+                void onTimeout(Interest::Ptr &&interest) override;
 
                 void reset();
 
@@ -111,10 +111,11 @@ namespace transport {
                 uint32_t state_;
                 uint32_t sent_;
                 uint32_t received_;
-                uint32_t timedout_;
+                uint32_t timeout_;
                 std::unique_ptr<asio::steady_timer> timer_;
                 Configuration *config_;
                 Verifier verifier_;
+                PARCKeyId *key_id_;
 
             };
         }

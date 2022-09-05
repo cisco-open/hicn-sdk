@@ -1,23 +1,24 @@
-#############################################################################
-# Copyright (c) 2022 Cisco and/or its affiliates.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at:
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-##############################################################################
+ #############################################################################
+ # Copyright (c) 2017 Cisco and/or its affiliates.
+ # Licensed under the Apache License, Version 2.0 (the "License");
+ # you may not use this file except in compliance with the License.
+ # You may obtain a copy of the License at:
+ #
+ #     http://www.apache.org/licenses/LICENSE-2.0
+ #
+ # Unless required by applicable law or agreed to in writing, software
+ # distributed under the License is distributed on an "AS IS" BASIS,
+ # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ ##############################################################################
 SHELL:=/bin/bash
 DISTILLERY_VERSION=2.0
 
 default.target: help
 
-all: init init_sdk download-dep compile-openssl compile-dep download-hicn compile-hicn
+
+all: init init_sdk download-dep compile-dep download-hicn compile-hicn
 
 all-withqt: all init_qt download-qtdep compile-qtdep
 
@@ -38,6 +39,7 @@ DISTILLERY_CONFIG_DIR ?= config
 ##DISTILLERY_DEFAULT_CONFIG ?= ${DISTILLERY_CONFIG_DIR}/config.mk
 ##DISTILLERY_LOCAL_CONFIG   ?= ${DISTILLERY_CONFIG_DIR}/local/config.mk
 DISTILLERY_USER_CONFIG    ?= ${DISTILLERY_CONFIG_DIR}/config.mk
+DEPENDENCIES_VERSION_CONFIG	?= ${DISTILLERY_CONFIG_DIR}/versions.mk
 
 ifneq (,$(wildcard ${DISTILLERY_USER_CONFIG}))
     include ${DISTILLERY_USER_CONFIG}
@@ -52,6 +54,17 @@ ifneq (,$(wildcard ${DISTILLERY_LOCAL_CONFIG}))
 endif
 
 include ${DISTILLERY_DEFAULT_CONFIG}
+include ${DEPENDENCIES_VERSION_CONFIG}
+
+VARS:=$(shell sed -ne 's/ *\#.*$$//; /./ s/=.*$$// p' ${DEPENDENCIES_VERSION_CONFIG} )
+$(foreach v,$(VARS),$(eval $(shell echo export $(v)="$($(v))")))
+ifneq (,${CUSTOM_HICN_REPO})
+	export HICN_REPO := ${CUSTOM_HICN_REPO}
+endif
+
+ifneq (,${CUSTOM_HICN_VERSION})
+	export HICN_VERSION := ${CUSTOM_HICN_VERSION}
+endif
 
 
 ##############################################################
@@ -85,16 +98,7 @@ modules_dir=
 	include config/modules/100-distillery.mk
 	include config/modules/105-libconfig.mk
 	include config/modules/107-libevent.mk
-	include config/modules/108-libxml2.mk
-	include config/modules/109-curl.mk
-	include config/modules/120-libparc.mk
 	include config/modules/130-hicn.mk
-	include config/modules/610-libdash.mk
-
-ifeq (${BUILD_HPROXY},1)
-modules_dir+=
-	include config/modules/140-hproxy.mk
-endif
 
 # Load user defined modules
 DISTILLERY_USER_MODULES_DIR=${DISTILLERY_USER_CONFIG_DIR}/modules
@@ -122,33 +126,31 @@ init:
 init_sdk:
 	@bash scripts/init_sdk.sh
 
-init_qt:
-	@bash scripts/init_qt.sh
-
 download-dep:
 	@bash scripts/download_dep.sh;
+
+
+init_qt:
+	@bash scripts/init_qt.sh
 
 compile-openssl: init
 	@bash  scripts/compile_openssl.sh ${ABI};
 
+
 install-asio: init
 	@bash scripts/install_asio.sh ${ABI};
-
-compile-dep: init compile-openssl install-asio libconfig libevent
 
 download-hicn:
 	@bash scripts/download_hicn.sh;
 
-ifeq (${BUILD_HPROXY},1)
-compile-hicn: init download-hicn cframework/libparc hicn hproxy
-else
-compile-hicn: init download-hicn cframework/libparc hicn
-endif
+
+
+compile-dep: init compile-openssl install-asio libconfig libevent
+
+compile-hicn: init download-hicn hicn
 
 download-qtdep:
 	@bash  scripts/download_qtdep.sh;
-
-compile-qtdep: init libxml2 curl viper/libdash compile-ffmpeg install-qtav
 
 compile-ffmpeg:
 	@bash scripts/compile_ffmpeg.sh ${ABI};
@@ -157,18 +159,10 @@ install-qtav:
 	@bash scripts/install_qtav.sh ${ABI};
 
 android_hicnforwarder:
-	@bash scripts/compile_hicnforwarder.sh -d NODEBUG -v "$(VERSION)" -p "$(ENABLE_HPROXY)" -u "$(GITHUB_USER)" -t "$(GITHUB_TOKEN)" -r "$(MVN_REPO)" -h "$(MVN_REPO_HPROXY)"
+	@bash scripts/compile_hicnforwarder.sh -d NODEBUG -v "$(VERSION)" -u "$(GITHUB_USER)" -t "$(GITHUB_TOKEN)" -r "$(MVN_REPO)"
 
 android_hicnforwarder_debug:
-	@bash scripts/compile_hicnforwarder.sh -d DEBUG -v "$(VERSION)" -p "$(ENABLE_HPROXY)" -u "$(GITHUB_USER)" -t "$(GITHUB_TOKEN)" -r "$(MVN_REPO)"  -h "$(MVN_REPO_HPROXY)"
-
-ifeq (${BUILD_HPROXY},1)
-android_hproxyaar:
-	@bash scripts/compile_hproxy_aar.sh NODEBUG $(VERSION)
-
-android_hproxyaar_debug:
-	@bash scripts/compile_hproxy_aar.sh DEBUG $(VERSION)
-endif
+	@bash scripts/compile_hicnforwarder.sh -d DEBUG -v "$(VERSION)" -u "$(GITHUB_USER)" -t "$(GITHUB_TOKEN)" -r "$(MVN_REPO)"
 
 android_commonaar:
 	@bash scripts/compile_common_aar.sh -d NODEBUG -v "$(VERSION)" -r "$(MVN_REPO)"
@@ -239,11 +233,6 @@ libconfig-clean:
 asio-clean:
 	@rm -rf ${DISTILLERY_INSTALL_DIR_PREFIX}_*/include/asio*
 
-libparc-clean:
-	@rm -rf ${DISTILLERY_BUILD_DIR_PREFIX}_*/cframework
-	@rm -rf ${DISTILLERY_INSTALL_DIR_PREFIX}_*/lib/libparc.*
-	@rm -rf ${DISTILLERY_INSTALL_DIR_PREFIX}_*/include/parc
-
 ffmpeg-clean:
 	@rm -rf ${DISTILLERY_INSTALL_DIR_PREFIX}_*/lib/libav.*
 	@rm -rf ${DISTILLERY_INSTALL_DIR_PREFIX}_*/include/libav*
@@ -256,7 +245,7 @@ libdash-clean:
 	@rm -rf ${DISTILLERY_INSTALL_DIR_PREFIX}_*/lib/libdash.*
 	@rm -rf ${DISTILLERY_INSTALL_DIR_PREFIX}_*/include/libdash
 
-dependencies-clean: event-clean openssl-clean curl-clean xml2-clean libconfig-clean libparc-clean asio-clean ffmpeg-clean libdash-clean
+dependencies-clean: event-clean openssl-clean curl-clean xml2-clean libconfig-clean asio-clean ffmpeg-clean libdash-clean
 
 sdk-clean:
 	@rm -rf sdk
@@ -297,8 +286,8 @@ help:
 	@echo "make compile-openssl			- Download and compile openssl"
 	@echo "make install-asio			- Install Asio"
 	@echo "make compile-dep				- Compile and install openssl, libconfig and libevent"
-	@echo "make download-hicn			- Download libparc and hicn stack"
-	@echo "make compile-hicn			- Compile and install libparc and hicn stack"
+	@echo "make download-hicn			- Download hicn stack"
+	@echo "make compile-hicn			- Compile and install hicn stack"
 	@echo "make download-qtdep			- Download viper files and the qt depends"
 	@echo "make compile-qtdep			- Compile and install ffmpeg, libdash, libcurl, qtAv and libxml2"
 	@echo "make compile-ffmpeg			- compile ffmpeg"
@@ -321,7 +310,6 @@ help:
 	@echo "make sdk-clean				- Clean sdk files"
 	@echo "make qt-clean				- Clean qt files"
 	@echo "make env-clean				- Clean android sdk and qt files"
-	@echo "make libparc-clean			- Clean libparc files and libs"
 	@echo "make hicn-clean				- Clean hicn files and libs"
 	@echo "make all-clean				- Clean	all files and libs"
 	@echo "make android_hicnforwarder GITHUB_USER=<github user> GITHUB_TOKEN=<github token>	- Build HicnForwader apk for android"
