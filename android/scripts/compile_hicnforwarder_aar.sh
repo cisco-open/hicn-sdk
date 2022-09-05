@@ -25,16 +25,21 @@ done
 cd hicn-aar/ForwarderLibrary
 echo "${SDK}"
 if [ ! -f local.properties ]; then
-	echo sdk.dir=${SDK} > local.properties
+	  echo sdk.dir=${SDK} > local.properties
+    echo ndk.dir=${NDK} >> local.properties
 fi
 
 if [ "$ENABLE_DEBUG" = "DEBUG" ]; then
-    ASSEMBLE="assembleDebug"
+    ASSEMBLE="compileDebugSources"
 else
-    ASSEMBLE="assembleRelease"
+    ASSEMBLE="compileReleaseSources"
 fi
 
-./gradlew $ASSEMBLE  -PMODULE_SRC=1 --debug
+if [ "$MVN_REPO" = "" ]; then
+    gradle $ASSEMBLE -PVERSION=$VERSION_CODE
+else
+    gradle $ASSEMBLE -PENABLE_HPROXY=$ENABLE_HPROXY
+fi
 
 
 cd ..
