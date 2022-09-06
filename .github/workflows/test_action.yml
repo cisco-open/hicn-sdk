@@ -1,0 +1,21 @@
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: "${{ github.event.pull_request.head.ref }}"
+          repository: "${{ github.event.pull_request.head.repo.full_name}}"
+          fetch-depth: 0  # ensures that tags are fetched, seems to be needed
+      - name: Capture commit id
+        id: capture
+        run: |
+          COMMIT_ID="$(git rev-parse "${{ github.head_ref }}")"
+          echo "The sha of the starting commit is $COMMIT_ID"
+          echo "::set-output name=commit::$COMMIT_ID"
