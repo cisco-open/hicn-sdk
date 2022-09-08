@@ -1,0 +1,124 @@
+
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.2.2'
+        //classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+    }
+}
+
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
+
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        minSdkVersion 28
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        buildConfigField "String", "VERSION",  "\"" + this.properties['VERSION']?.trim()  + "\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    libraryVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFileName = "common-${variant.name}-${defaultConfig.versionName}-${defaultConfig.versionCode}.aar"
+        }
+    }
+
+}
+
+
+def getVersionCode_() {
+
+    if ("${getProjectProperty('VERSION_CODE')}".isEmpty())
+        return 5
+    else {
+        return "${getProjectProperty('VERSION_CODE')}".toInteger()
+    }
+}
+
+def getVersion() {
+
+    if ("${getProjectProperty('VERSION')}".isEmpty())
+        return "1.0"
+    else {
+        return "${getProjectProperty('VERSION')}"
+    }
+}
+
+def String getProjectProperty(String propertyName)
+{
+    String value = "1"
+    if (hasProperty(propertyName))
+    {
+        value = this.properties[propertyName]
+    }
+    return value
+}
+
+// publishing {
+//     repositories {
+//         maven {
+//             name = 'GitHubPackages'
+//             url = uri(project.findProperty('MVN_REPO'))
+//             credentials {
+//                 username = project.findProperty('A_USER')
+//                 password = project.findProperty('A_PASSWORD')
+//             }
+//         }
+
+//     }
+
+//     afterEvaluate {
+//         publications {
+//             release(MavenPublication) {
+//                 from components.release
+
+//                 groupId = 'com.cisco.hicn'
+//                 version = project.findProperty('VERSION')
+//                 artifactId 'common'
+//             }
+//             debug(MavenPublication) {
+//                 from components.debug
+
+//                 groupId = 'com.cisco.hicn'
+//                 version = project.findProperty('VERSION')
+//                 artifactId 'common-debug'
+//             }
+//         }
+//     }
+// }
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+}

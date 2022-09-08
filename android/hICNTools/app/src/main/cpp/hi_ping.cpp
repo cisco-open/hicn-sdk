@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Cisco and/or its affiliates.
+ * Copyright (c) 2019 Cisco and/or its affiliates.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at:
@@ -58,9 +58,9 @@ namespace transport {
                 state_ = SYN_STATE;
                 sent_ = 0;
                 received_ = 0;
-                timedout_ = 0;
+                timeout_ = 0;
                 if (!c->certificate_.empty()) {
-                    verifier_.useCertificate(c->certificate_);
+                    verifier_.setCertificate(c->certificate_);
                 }
             }
 
@@ -151,22 +151,23 @@ namespace transport {
             }
 
 
-            void Client::onTimeout(Interest::Ptr &interest, const Name &name) {
+            void Client::onTimeout(Interest::Ptr &&interest) {
                 std::stringstream ss;
-                ss << "### timeout for " << name
-                          << " src port: " << interest->getSrcPort()
-                          << " dst port: " << interest->getDstPort()
-                          << " flags: " << interest->printFlags() << std::endl;
+                ss << "### timeout for " << interest->getName().toString()
+                   << " src port: " << interest->getSrcPort() << " dst port: "
+                   << interest->getDstPort()
+                   << " flags: " << interest->printFlags() << std::endl;
                 config_->env->CallVoidMethod(config_->instance, config_->hipingLogCallback,
                                              config_->env->NewStringUTF(ss.str().c_str()));
                 config_->env->CallVoidMethod(config_->instance, config_->hipingUpdateGraphCallback,
                                              0);
 
                 __android_log_print(ANDROID_LOG_INFO, TAG_HIPING, "%s", ss.str().c_str());
-                timedout_++;
+                timeout_++;
                 processed_++;
                 if (processed_ >= config_->maxPing_) {
                     afterSignal();
+
                 }
             }
 
@@ -243,7 +244,7 @@ namespace transport {
                 state_ = SYN_STATE;
                 sent_ = 0;
                 received_ = 0;
-                timedout_ = 0;
+                timeout_ = 0;
             }
 
             uint32_t Client::getSent() {
@@ -255,7 +256,7 @@ namespace transport {
             }
 
             uint32_t Client::getTimeout() {
-                return timedout_;
+                return timeout_;
             }
 
         }

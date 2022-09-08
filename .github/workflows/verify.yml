@@ -1,0 +1,46 @@
+#############################################################################
+# Copyright (c) 2022 Cisco and/or its affiliates.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at:
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+##############################################################################
+
+on:
+ pull_request:
+   types:
+     - opened
+     - synchronize
+
+env:
+ REGISTRY: ghcr.io
+ IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+ test:
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v2
+       with:
+         ref: "${{ github.event.pull_request.head.ref }}"
+         repository: "${{ github.event.pull_request.head.repo.full_name}}"
+         fetch-depth: 0
+     - name: Capture commit id
+       id: capture
+       run: |
+         COMMIT_ID="$(git rev-parse "${{ github.head_ref }}")"
+         echo "The sha of the starting commit is $COMMIT_ID"
+         echo "::set-output name=commit::$COMMIT_ID"
+     - name: Check commits
+       uses: manang/commitizen-check@v0.0.1
+     - name: compile docker
+       id: compile
+       run: |
+         bash android/ci/docker-build.sh

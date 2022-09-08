@@ -1,6 +1,6 @@
 # Contributing to hicn-sdk
-If you intend to contribute to the project, please follow the guidelines
-below:
+If you intend to contribute to the project, please use Github to perform
+the following tasks.
 
 - Reporting a bug
 - Discussing the current state of the code
@@ -31,5 +31,5 @@ tried that didn't work)
 
 
 ## License
-By contributing, you agree that your contributions will be licensed under its
+By contributing, you agree that your contributions will be licensed under the
 Apache License, Version 2.
