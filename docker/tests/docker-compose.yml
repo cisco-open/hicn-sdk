@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.host
+      args:
+        HOST: 1
     container_name: host1
     hostname: host1
     volumes:
@@ -12,15 +14,12 @@ services:
       - net1
     init: true
     privileged: true
-#    entrypoint: [/bin/bash, -ex, -c]
-    command:
-      - route add default gw 10.1.0.3
-      - route del default gw 10.1.0.1
-      - tail -f /dev/null
   host2:
     build:
       context: .
       dockerfile: Dockerfile.host
+      args:
+        HOST: 2
     container_name: host2
     hostname: host2
     volumes:
@@ -29,11 +28,6 @@ services:
       - net3
     init: true
     privileged: true
-#    entrypoint: [/bin/bash, -ex, -c]
-    command:
-      - route add default gw 10.3.0.3
-      - route del default gw 10.3.0.1
-      - tail -f /dev/null
   router1:
     build:
       context: .

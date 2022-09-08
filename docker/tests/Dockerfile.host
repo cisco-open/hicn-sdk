@@ -24,4 +24,11 @@ RUN apt-get update && apt-get install -y \
     && apt-get autoremove -y \
     && apt-get clean
 
-    
+
+ARG HOST
+COPY startup.conf /etc/vpp/
+COPY vpp-init-host${HOST}.txt /etc/vpp/vpp-init.txt
+
+WORKDIR /workspace
+ENTRYPOINT ["/usr/bin/tini", "--"]
+CMD ["/usr/lib/frr/frr-start.sh"]
