@@ -25,10 +25,7 @@ cd src
 
 if [ ! -d openssl ]; then
 	echo "openssl  not found"
-	wget $OPENSSL_REPO/${CISCOSSL_VERSION//./\/}/ciscossl-$OPENSSL_VERSION.$CISCOSSL_VERSION.tar.gz
-    tar -zxvf ciscossl-$OPENSSL_VERSION.$CISCOSSL_VERSION.tar.gz
-    mv ciscossl-$OPENSSL_VERSION.$CISCOSSL_VERSION openssl
-	rm ciscossl-$OPENSSL_VERSION.$CISCOSSL_VERSION.tar.gz
+	git clone $OPENSSL_REPO -b $OPENSSL_VERSION
 fi
 
 if [ ! -d libevent ]; then

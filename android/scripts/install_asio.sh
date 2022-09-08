@@ -32,7 +32,7 @@ if [ ! -d ${DISTILLERY_INSTALL_DIR}/include/asio ]; then
     fi
     cp -r asio/asio/include/asio.hpp ${DISTILLERY_INSTALL_DIR}/include/
     cp -r asio/asio/include/asio ${DISTILLERY_INSTALL_DIR}/include/
-    ASIO_VERSION=$(git log -1 --format="%H")
+    cd asio && ASIO_VERSION=$(git log -1 --format="%H") && cd ..
     ${SED} -i "/${ABI}_asio/d" ${VERSIONS_FILE}
 	echo ${ABI}_asio=$ASIO_VERSION >> ${VERSIONS_FILE}
     cd ..
