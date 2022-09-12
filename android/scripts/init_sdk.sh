@@ -61,7 +61,7 @@ if [ -z ${NDK_PATH} ]; then
 		echo yes | cmdline-tools/bin/sdkmanager --sdk_root=`pwd` 'platform-tools'
 		echo yes | cmdline-tools/bin/sdkmanager --sdk_root=`pwd` 'build-tools;'$ANDROID_BUILD_TOOLS
 		echo yes | cmdline-tools/bin/sdkmanager --sdk_root=`pwd` 'cmake;'$ANDROID_CMAKE_REV
-		echo yes | cmdline-tools/bin/sdkmanager --sdk_root=`pwd` --channel=3 --channel=1 'cmake;'$ANDROID_CMAKE_REV_3_18
+		echo yes | cmdline-tools/bin/sdkmanager --sdk_root=`pwd` --channel=3 --channel=1 'cmake;'$ANDROID_CMAKE_REV_3_22
 		#echo yes | cmdline-tools/bin/sdkmanager --sdk_root=`pwd` 'ndk-bundle'
 		echo yes | cmdline-tools/bin/sdkmanager --sdk_root=`pwd` "ndk;$ANDROID_NDK_VERSION" --channel=3
 	fi

@@ -24,7 +24,7 @@ done
 
 cd hicn-aar/FaceMgrLibrary
 if [ ! -f local.properties ]; then
-	  echo sdk.dir=${SDK} > local.properties
+	echo sdk.dir=${SDK} > local.properties
     echo ndk.dir=${NDK} >> local.properties
 fi
 
