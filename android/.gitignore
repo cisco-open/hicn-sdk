@@ -1,2 +1,10 @@
 hicn-aar/FaceMgrLibrary/facemgrLibrary/.cxx
 hicn-aar/ForwarderLibrary/facemgrLibrary/.cxx
+.distillery.stamp
+.versions
+build_aarch64
+build_x86_64
+sdk
+src
+usr_aarch64
+usr_x86_64

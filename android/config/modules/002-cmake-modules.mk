@@ -24,7 +24,7 @@ ${$1_BUILD_DIR}/Makefile: ${$1_SOURCE_DIR}/CMakeLists.txt ${DISTILLERY_STAMP}
 	    echo ${$1_BUILD_DIR};
 	    cd ${$1_BUILD_DIR}; \
 	    DEPENDENCY_HOME=${DISTILLERY_EXTERN_DIR} \
-	    ${SDK}/cmake/${ANDROID_CMAKE_REV_3_18}/bin/cmake \ # -DCMAKE_TOOLCHAIN_FILE=${NDK}/build/cmake/android.toolchain.cmake \
+	    ${SDK}/cmake/${ANDROID_CMAKE_REV_3_22}/bin/cmake \ # -DCMAKE_TOOLCHAIN_FILE=${NDK}/build/cmake/android.toolchain.cmake \
 	    -DANDROID_TOOLCHAIN=clang -DANDROID_STL=c++_static \
 	    -DANDROID_ABI=${ANDROID_ABI} \ #ANDROID_STANDALONE_TOOLCHAIN_SEARCH_PATH=${DISTILLERY_ROOT_DIR}/sdk/toolchain_${ABI} \
 	    -DCMAKE_BUILD_TYPE=Release \
