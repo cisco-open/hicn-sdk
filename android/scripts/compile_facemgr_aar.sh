@@ -24,20 +24,20 @@ done
 
 cd hicn-aar/FaceMgrLibrary
 if [ ! -f local.properties ]; then
-	echo sdk.dir=${SDK} > local.properties
-    echo ndk.dir=${NDK} >> local.properties
+  echo sdk.dir=${SDK} > local.properties
+  echo ndk.dir=${NDK} >> local.properties
 fi
 
 if [ "$ENABLE_DEBUG" = "DEBUG" ]; then
-    ASSEMBLE="compileDebugSources"
+  ASSEMBLE="compileDebugSources"
 else
-    ASSEMBLE="compileReleaseSources"
+  ASSEMBLE="compileReleaseSources"
 fi
 
 if [ "$MVN_REPO" = "" ]; then
-    gradle $ASSEMBLE -PVERSION=$VERSION_CODE
+  gradle $ASSEMBLE -PVERSION=$VERSION_CODE
 else
-    gradle $ASSEMBLE -PENABLE_HPROXY=$ENABLE_HPROXY
+  gradle $ASSEMBLE -PENABLE_HPROXY=$ENABLE_HPROXY
 fi
 
 cd ..

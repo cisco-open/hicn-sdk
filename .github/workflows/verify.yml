@@ -24,23 +24,23 @@ env:
  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
- test:
-   runs-on: ubuntu-latest
-   steps:
-     - uses: actions/checkout@v2
-       with:
-         ref: "${{ github.event.pull_request.head.ref }}"
-         repository: "${{ github.event.pull_request.head.repo.full_name}}"
-         fetch-depth: 0
-     - name: Capture commit id
-       id: capture
-       run: |
-         COMMIT_ID="$(git rev-parse "${{ github.head_ref }}")"
-         echo "The sha of the starting commit is $COMMIT_ID"
-         echo "::set-output name=commit::$COMMIT_ID"
-     - name: Check commits
-       uses: manang/commitizen-check@v0.0.1
-     - name: compile docker
-       id: compile
-       run: |
-         bash android/ci/docker-build.sh
+  Verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: "${{ github.event.pull_request.head.ref }}"
+          repository: "${{ github.event.pull_request.head.repo.full_name}}"
+          fetch-depth: 0
+      - name: Capture commit id
+        id: capture
+        run: |
+          COMMIT_ID="$(git rev-parse "${{ github.head_ref }}")"
+          echo "The sha of the starting commit is $COMMIT_ID"
+          echo "::set-output name=commit::$COMMIT_ID"
+      - name: Check commits
+        uses: manang/commitizen-check@v0.0.1
+      - name: compile docker
+        id: compile
+        run: |
+          bash android/ci/docker-build.sh

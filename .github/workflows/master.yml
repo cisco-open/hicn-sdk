@@ -1,0 +1,69 @@
+#############################################################################
+# Copyright (c) 2022 Cisco and/or its affiliates.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at:
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+##############################################################################
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  Master:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: "${{ github.event.pull_request.head.ref }}"
+          repository: "${{ github.event.pull_request.head.repo.full_name}}"
+          token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
+          fetch-depth: 0
+      - name: run
+        id: run
+        run: |
+          echo $GITHUB_SHA
+          if git describe --exact-match $GITHUB_SHA; then
+            echo ::set-output name=istag::'true'
+          else
+            echo ::set-output name=istag::'false'
+          fi
+          git describe --exact-match $GITHUB_SHA | true
+          PROMOTE=$(echo "${{ github.event.head_commit.message }}" | \
+            grep -e "#promote" | \
+            awk '$0 ~ /#promote/ { print "promote" }')
+          PROMOTE_LEVEL=$(echo "${{ github.event.head_commit.message }}" | \
+            grep -E "#promote MAJOR|MINOR|PATCH" | \
+            awk -F '#promote' '{print $2}' | \
+            awk -F ' ' '{print $1}')
+          echo ::set-output name=promote::$PROMOTE
+          echo ::set-output name=promote-level::$PROMOTE_LEVEL
+      - name: Create bump and changelog   
+        id: cz
+        if: "!startsWith(github.event.head_commit.message, 'bump:') && steps.run.outputs.promote == 'promote' && steps.run.outputs.promote-level != ''"
+        uses: commitizen-tools/commitizen-action@master
+        with:
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          increment: ${{ steps.run.outputs.promote-level }}
+          push: true
+          changelog: true
+      - name: Print Version
+        if: "!startsWith(github.event.head_commit.message, 'bump:') &&  steps.run.outputs.promote == 'promote' && steps.run.outputs.promote-level != ''"
+        run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
+      - name: Build Android
+        if: "startsWith(github.event.head_commit.message, 'bump:') && steps.run.outputs.istag == 'true'"
+        run: |
+          bash android/ci/docker-build.sh
