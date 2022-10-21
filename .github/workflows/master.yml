@@ -30,9 +30,9 @@ jobs:
         with:
           ref: "${{ github.event.pull_request.head.ref }}"
           repository: "${{ github.event.pull_request.head.repo.full_name}}"
-          token: "${{ secrets.GITHUB_TOKEN }}"
+          token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
           fetch-depth: 0
-      - name: Take version
+      - name: run
         id: run
         run: |
           echo $GITHUB_SHA
@@ -56,21 +56,14 @@ jobs:
         if: "!startsWith(github.event.head_commit.message, 'bump:') && steps.run.outputs.promote == 'promote' && steps.run.outputs.promote-level != ''"
         uses: commitizen-tools/commitizen-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           increment: ${{ steps.run.outputs.promote-level }}
           push: true
           changelog: true
-      - name: 'Get Previous tag'
-        id: previoustag
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
-        with:
-          fallback: v0.0.0
+      - name: Print Version
+        if: "!startsWith(github.event.head_commit.message, 'bump:') &&  steps.run.outputs.promote == 'promote' && steps.run.outputs.promote-level != ''"
+        run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
       - name: Build Android
+        if: "startsWith(github.event.head_commit.message, 'bump:') && steps.run.outputs.istag == 'true'"
         run: |
-          echo "${{steps.previoustag.outputs.tag}}"
           bash android/ci/docker-build.sh
-      - name: Publish artifacts
-        id: publish
-        if: "startsWith(github.event.head_commit.message, 'bump:') || steps.cz.outputs.version != ''"
-        run: |
-            echo "${{steps.cz.outputs.version}} ${{steps.previoustag.outputs.tag}} ${{ github.event.head_commit.message }}"
