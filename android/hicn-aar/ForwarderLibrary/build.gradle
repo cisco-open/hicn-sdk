@@ -18,8 +18,8 @@ buildscript {
         MODULE_SRC = '1'
         A_USER = ''
         A_PASSWORD = ''
-        MVN_REPO = 'https://engci-maven-master.cisco.com/artifactory/maqy-maven-release'
-        VERSION = '1'
+        MVN_REPO = ''
+        VERSION_NUMBER = 'v0.0.10'
     }
     repositories {
         google()

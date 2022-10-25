@@ -31,9 +31,7 @@ COPY . /android-sdk
 
 WORKDIR /android-sdk
 
-RUN echo sdk.dir=`pwd`/sdk > CommonLibrary/local.properties && cd CommonLibrary \ 
-    && gradle publish -PA_USER=${A_USERNAME} -PA_PASSWORD=${A_PASSWORD} -PVERSION_NUMBER=${VERSION} -PMODULE_SRC='0' -PMVN_REPO=${GITHUB_MVN_REPO}
-RUN echo sdk.dir=`pwd`/sdk > hicn-aar/FaceMgrLibrary/local.properties && cd hicn-aar && cd FaceMgrLibrary \
-    && gradle publish -PA_USER=${A_USERNAME} -PA_PASSWORD=${A_PASSWORD} -PVERSION_NUMBER=${VERSION} -PMODULE_SRC='0' -PMVN_REPO=${GITHUB_MVN_REPO}
-RUN echo sdk.dir=`pwd`/sdk > hicn-aar/ForwarderLibrary/local.properties && cd hicn-aar && cd ForwarderLibrary \
-    && gradle publish -PA_USER=${A_USERNAME} -PA_PASSWORD=${A_PASSWORD} -PVERSION_NUMBER=${VERSION} -PMODULE_SRC='0' -PMVN_REPO=${GITHUB_MVN_REPO}
+RUN gradle --version
+RUN echo sdk.dir=`pwd`/sdk > CommonLibrary/local.properties && cd CommonLibrary && gradle compileReleaseSources
+RUN make android_facemgrlibraryaar
+RUN make android_forwarderlibraryaar

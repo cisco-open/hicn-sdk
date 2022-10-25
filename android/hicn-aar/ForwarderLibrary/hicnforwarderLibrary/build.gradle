@@ -42,7 +42,7 @@ android {
             }
         }
 
-        buildConfigField "String", "VERSION", "\"" + this.properties['VERSION']?.trim() + "\""
+        buildConfigField "String", "VERSION", "\"" + this.properties['VERSION_NUMBER']?.trim() + "\""
     }
 
     buildTypes {
@@ -84,10 +84,10 @@ def getVersionCode_() {
 
 def getVersion() {
 
-    if ("${getProjectProperty('VERSION')}".isEmpty())
+    if ("${getProjectProperty('VERSION_NUMBER')}".isEmpty())
         return "1.0"
     else {
-        return "${getProjectProperty('VERSION')}"
+        return "${getProjectProperty('VERSION_NUMBER')}"
     }
 }
 
@@ -102,54 +102,59 @@ def String getProjectProperty(String propertyName)
 }
 
 publishing {
-    repositories {
-        maven {
-            name = 'Artifactory'
-            url = uri(project.findProperty('MVN_REPO'))
-            credentials {
-                username = project.findProperty('A_USER')
-                password = project.findProperty('A_PASSWORD')
+    if (Integer.parseInt(this.properties['MODULE_SRC']) == 0) {
+        repositories {
+            maven {
+                name = 'Artifactory'
+                url = uri(project.findProperty('MVN_REPO'))
+                credentials {
+                    username = project.findProperty('A_USER')
+                    password = project.findProperty('A_PASSWORD')
+                }
             }
+
         }
 
-    }
+        afterEvaluate {
+            publications {
+                release(MavenPublication) {
+                    from components.release
 
-    afterEvaluate {
-        publications {
-            release(MavenPublication) {
-                from components.release
+                    groupId = 'com.cisco.hicn'
+                    version = project.findProperty('VERSION_NUMBER')
+                    artifactId 'hicnforwarder'
+                }
+                debug(MavenPublication) {
+                    from components.debug
 
-                groupId = 'com.cisco.hicn'
-                version = project.findProperty('VERSION')
-                artifactId 'hicnforwarder'
-            }
-            debug(MavenPublication) {
-                from components.debug
-
-                groupId = 'com.cisco.hicn'
-                version = project.findProperty('VERSION')
-                artifactId 'hicnforwarder-debug'
+                    groupId = 'com.cisco.hicn'
+                    version = project.findProperty('VERSION_NUMBER')
+                    artifactId 'hicnforwarder-debug'
+                }
             }
         }
     }
 }
 
 repositories {
-    maven {
-        name = 'Artifactory'
-        url = uri(this.properties['MVN_REPO'])
-        credentials {
-            username = this.properties["A_USER"]
-            password = this.properties["A_PASSWORD"]
+    if (Integer.parseInt(this.properties['MODULE_SRC']) == 0) {
+        maven {
+            name = 'Artifactory'
+            url = uri(this.properties['MVN_REPO'])
+            credentials {
+                username = this.properties["A_USER"]
+                password = this.properties["A_PASSWORD"]
+            }
         }
     }
 }
 
 dependencies {
     if (Integer.parseInt(this.properties['MODULE_SRC']) == 0) {
-        implementation 'com.cisco.hicn:common:' + common
+        implementation 'com.cisco.hicn:hicn-common:' + project.findProperty('VERSION_NUMBER')
     } else {
         implementation project(":aar:common")
+        
     }
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
