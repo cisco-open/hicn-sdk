@@ -13,25 +13,25 @@
  # limitations under the License.
  ##############################################################################
 
-FROM ubuntu:22.04 as android-sdk-dep
+ARG BASE_IMAGE=ubuntu:2204
+FROM $BASE_IMAGE
 
-ENV TZ=Europe/Paris
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN apt update && apt install -y build-essential openjdk-11-jdk git autoconf libtool wget unzip python3 
-RUN wget -c https://services.gradle.org/distributions/gradle-7.4.2-bin.zip -P /tmp \
-    && unzip -d /opt/gradle /tmp/gradle-7.4.2-bin.zip \
-    && rm /tmp/gradle-7.4.2-bin.zip \
-    && echo export GRADLE_HOME=/opt/gradle/gradle-7.4.2 >> /etc/profile.d/gradle.sh \
-    && echo export PATH=/opt/gradle/gradle-7.4.2/bin:${PATH} >> /etc/profile.d/gradle.sh \
-    && cat /etc/profile.d/gradle.sh \
-    && chmod +x /etc/profile.d/gradle.sh \
-    && . /etc/profile.d/gradle.sh \
-    && gradle --version
-ENV PATH=/opt/gradle/gradle-7.4.2/bin:${PATH} 
+MAINTAINER Angelo Mantellini <manangel@cisco.com>
+
+ARG GITHUB_USERNAME
+ARG GITHUB_PASSWORD
+ARG GITHUB_MVN_REPO
+ARG VERSION
+ENV A_USERNAME=$GITHUB_USERNAME
+ENV A_PASSWORD=$GITHUB_PASSWORD
+ENV GITHUB_MVN_REPO=$GITHUB_MVN_REPO
+ENV VERSION=$VERSION
 
 COPY . /android-sdk
 
 WORKDIR /android-sdk
+RUN ls
+RUN pwd
 RUN make init_sdk && ./compileAll.sh && rm -rf sdk/commandlinetools*.zip && bash compileDep.sh && rm -rf src build*
 
 FROM android-sdk-dep as android-sdk-build
@@ -39,3 +39,11 @@ RUN gradle --version
 RUN echo sdk.dir=`pwd`/sdk > CommonLibrary/local.properties && cd CommonLibrary && gradle compileReleaseSources
 RUN make android_facemgrlibraryaar
 RUN make android_forwarderlibraryaar
+
+FROM android-sdk-dep AS android-sdk-publish
+RUN echo sdk.dir=`pwd`/sdk > CommonLibrary/local.properties && cd CommonLibrary \ 
+    && gradle publish -PA_USER=${A_USERNAME} -PA_PASSWORD=${A_PASSWORD} -PVERSION_NUMBER=${VERSION} -PMODULE_SRC='0' -PMVN_REPO=${GITHUB_MVN_REPO}
+RUN echo sdk.dir=`pwd`/sdk > hicn-aar/FaceMgrLibrary/local.properties && cd hicn-aar && cd FaceMgrLibrary \
+    && gradle publish -PA_USER=${A_USERNAME} -PA_PASSWORD=${A_PASSWORD} -PVERSION_NUMBER=${VERSION} -PMODULE_SRC='0' -PMVN_REPO=${GITHUB_MVN_REPO}
+RUN echo sdk.dir=`pwd`/sdk > hicn-aar/ForwarderLibrary/local.properties && cd hicn-aar && cd ForwarderLibrary \
+    && gradle publish -PA_USER=${A_USERNAME} -PA_PASSWORD=${A_PASSWORD} -PVERSION_NUMBER=${VERSION} -PMODULE_SRC='0' -PMVN_REPO=${GITHUB_MVN_REPO}

@@ -29,6 +29,8 @@ jobs:
     steps:
       - name: "Build:checkout"
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: 'Get Previous tag'
         id: previoustag
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
@@ -43,12 +45,3 @@ jobs:
           registry: ghcr.io
           dockerfile: android/ci/Dockerfile_env
           tags: latest,${{ steps.previoustag.outputs.tag }}
-      # - name: Publish to Registry
-      #   uses: jerray/publish-docker-action@master
-      #   with:
-      #     username: ${{ secrets.HICN_BOT }}
-      #     password: ${{ secrets.HICN_ACTIONS_TOKEN }}
-      #     repository: ${{github.repository}}/android-sdk
-      #     registry: docker.pkg.github.com
-      #     file: android/ci/Dockerfile_env
-      #     tags: latest,${{ steps.previoustag.outputs.tag }}

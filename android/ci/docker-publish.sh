@@ -24,11 +24,14 @@ echo "******************* Compilation  *************************"
 echo "***********************************************************"
 
 ANDROID_SDK_DEP=android-sdk-dep
-ANDROID_SDK_BUILD=android-sdk-build
+ANDROID_SDK_PUBLISH=android-sdk-build
+HICN_AAR_PUBLISH=android-sdk-publish
 
 docker build \
-  --progress=plain \
-  --target ${ANDROID_SDK_BUILD} \
-  -t ${ANDROID_SDK_BUILD} \
+  -t ${HICN_AAR_PUBLISH} \
+  --target ${HICN_AAR_PUBLISH} \
+  --build-arg GITHUB_USERNAME \
+  --build-arg GITHUB_PASSWORD \
+  --build-arg GITHUB_MVN_REPO \
   -f android/ci/Dockerfile \
-  androi
+  .

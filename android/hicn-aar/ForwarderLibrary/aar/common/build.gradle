@@ -81,38 +81,38 @@ def String getProjectProperty(String propertyName)
     return value
 }
 
-// publishing {
-//     repositories {
-//         maven {
-//             name = 'GitHubPackages'
-//             url = uri(project.findProperty('MVN_REPO'))
-//             credentials {
-//                 username = project.findProperty('A_USER')
-//                 password = project.findProperty('A_PASSWORD')
-//             }
-//         }
+publishing {
+    repositories {
+        maven {
+            name = 'GitHubPackages'
+            url = uri(project.findProperty('MVN_REPO'))
+            credentials {
+                username = project.findProperty('A_USER')
+                password = project.findProperty('A_PASSWORD')
+            }
+        }
 
-//     }
+    }
 
-//     afterEvaluate {
-//         publications {
-//             release(MavenPublication) {
-//                 from components.release
+    afterEvaluate {
+        publications {
+            release(MavenPublication) {
+                from components.release
 
-//                 groupId = 'com.cisco.hicn'
-//                 version = project.findProperty('VERSION')
-//                 artifactId 'common'
-//             }
-//             debug(MavenPublication) {
-//                 from components.debug
+                groupId = 'com.cisco.hicn'
+                version = project.findProperty('VERSION_NUMBER')
+                artifactId 'common'
+            }
+            debug(MavenPublication) {
+                from components.debug
 
-//                 groupId = 'com.cisco.hicn'
-//                 version = project.findProperty('VERSION')
-//                 artifactId 'common-debug'
-//             }
-//         }
-//     }
-// }
+                groupId = 'com.cisco.hicn'
+                version = project.findProperty('VERSION_NUMBER')
+                artifactId 'common-debug'
+            }
+        }
+    }
+}
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -120,5 +120,4 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
 }

@@ -13,6 +13,8 @@
 # limitations under the License.
 ##############################################################################
 
+name: Master Branch Job
+
 on:
   push:
     branches:
@@ -26,7 +28,7 @@ jobs:
   Master:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: "${{ github.event.pull_request.head.ref }}"
           repository: "${{ github.event.pull_request.head.repo.full_name}}"
@@ -36,12 +38,12 @@ jobs:
         id: run
         run: |
           echo $GITHUB_SHA
-          if git describe --exact-match $GITHUB_SHA; then
+          if git describe --tags --exact-match $GITHUB_SHA; then
             echo ::set-output name=istag::'true'
           else
             echo ::set-output name=istag::'false'
           fi
-          git describe --exact-match $GITHUB_SHA | true
+          git describe --tags --exact-match $GITHUB_SHA | true
           PROMOTE=$(echo "${{ github.event.head_commit.message }}" | \
             grep -e "#promote" | \
             awk '$0 ~ /#promote/ { print "promote" }')
@@ -65,5 +67,9 @@ jobs:
         run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
       - name: Build Android
         if: "startsWith(github.event.head_commit.message, 'bump:') && steps.run.outputs.istag == 'true'"
+        env:
+          GITHUB_PASSWORD: '${{ secrets.HICN_ACTIONS_TOKEN }}'
+          GITHUB_USERNAME: '${{ secrets.HICN_BOT }}'
+          GITHUB_MVN_REPO: 'https://maven.pkg.github.com/${{github.repository}}'
         run: |
-          bash android/ci/docker-build.sh
+          bash android/ci/docker-publish.sh
