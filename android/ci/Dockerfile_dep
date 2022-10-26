@@ -13,27 +13,13 @@
 # limitations under the License.
 ##############################################################################
 
-FROM ubuntu:22.04
+ARG BASE_IMAGE=ubuntu:2204
+FROM $BASE_IMAGE
 
 MAINTAINER Angelo Mantellini <manangel@cisco.com>
-
-ENV VERBOSE=1
-
-RUN apt update && apt install -y build-essential openjdk-11-jdk git autoconf libtool wget unzip python3 && apt clean
-RUN wget -c https://services.gradle.org/distributions/gradle-7.4.2-bin.zip -P /tmp \
-    && unzip -d /opt/gradle /tmp/gradle-7.4.2-bin.zip \
-    && rm /tmp/gradle-7.4.2-bin.zip \
-    && echo export GRADLE_HOME=/opt/gradle/gradle-7.4.2 >> /etc/profile.d/gradle.sh \
-    && echo export PATH=/opt/gradle/gradle-7.4.2/bin:${PATH} >> /etc/profile.d/gradle.sh \
-    && cat /etc/profile.d/gradle.sh \
-    && chmod +x /etc/profile.d/gradle.sh \
-    && . /etc/profile.d/gradle.sh \
-    && gradle --version
-
-ENV PATH=/opt/gradle/gradle-7.4.2/bin:${PATH}
 
 COPY android /android-sdk
 
 WORKDIR /android-sdk
 
-RUN make init_sdk && rm -rf sdk/commandlinetools-mac-8512546_latest.zip && rm -rf $(ls -1 | grep -v 'sdk')
+RUN bash compileDep.sh &&rm -rf $(ls| grep -v 'sdk\|usr_aarch64\|usr_x86_64')
