@@ -1,3 +1,13 @@
+## v0.0.2 (2022-10-26)
+
+### Feat
+
+- add multi stage docker images (#33)
+
+### Fix
+
+- **master.yml**: remove personal token (#26)
+
 ## v0.0.1 (2022-10-19)
 
 ### Feat
