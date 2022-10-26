@@ -13,11 +13,11 @@
  # limitations under the License.
  ##############################################################################
 
-name: Docker Android Environment
+name: Docker Android Hicn
 
 on:
   schedule:
-    - cron: '0 0 1 */1 *'
+    - cron: '0 * * * *'
   push:
     branches:
       - main
@@ -33,22 +33,14 @@ jobs:
         id: previoustag
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
         with:
-          fallback: v0.0.0
+          fallback: v0.0.0      
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: ${{github.repository}}/android-env
+          name: ${{github.repository}}/android-hicn
           username: ${{ secrets.HICN_BOT }}
           password: ${{ secrets.HICN_ACTIONS_TOKEN }}
           registry: ghcr.io
-          dockerfile: android/ci/Dockerfile_env
+          dockerfile: android/ci/Dockerfile_hicn
+          buildargs: BASE_IMAGE=ghcr.io/${{github.repository}}/android-dep:latest
           tags: latest,${{ steps.previoustag.outputs.tag }}
-      # - name: Publish to Registry
-      #   uses: jerray/publish-docker-action@master
-      #   with:
-      #     username: ${{ secrets.HICN_BOT }}
-      #     password: ${{ secrets.HICN_ACTIONS_TOKEN }}
-      #     repository: ${{github.repository}}/android-sdk
-      #     registry: docker.pkg.github.com
-      #     file: android/ci/Dockerfile_env
-      #     tags: latest,${{ steps.previoustag.outputs.tag }}
