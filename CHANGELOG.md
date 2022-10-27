@@ -1,3 +1,9 @@
+## v0.0.3 (2022-10-27)
+
+### Feat
+
+- publish android aar to packages (#34)
+
 ## v0.0.2 (2022-10-26)
 
 ### Feat
