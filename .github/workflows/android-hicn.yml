@@ -1,4 +1,4 @@
- #############################################################################
+#############################################################################
  # Copyright (c) 2022 Cisco and/or its affiliates.
  # Licensed under the Apache License, Version 2.0 (the "License");
  # you may not use this file except in compliance with the License.
@@ -35,11 +35,11 @@ jobs:
         with:
           fallback: v0.0.0      
       - name: Publish to Registry
-        uses: elgohr/Publish-Docker-Github-Action@master
+        uses: elgohr/Publish-Docker-Github-Action@v4
         with:
           name: ${{github.repository}}/android-hicn
-          username: ${{ secrets.HICN_BOT }}
           password: ${{ secrets.HICN_ACTIONS_TOKEN }}
+          username: ${{ secrets.HICN_BOT }}
           registry: ghcr.io
           dockerfile: android/ci/Dockerfile_hicn
           buildargs: BASE_IMAGE=ghcr.io/${{github.repository}}/android-dep:latest

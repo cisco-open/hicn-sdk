@@ -15,7 +15,10 @@
 
 buildscript {
     ext {
-        VERSION = '1'
+        MVN_REPO = ''
+        A_USER = ''
+        A_PASSWORD = ''
+        VERSION_NUMBER = 'v0.0.10'
     }
 
     repositories {

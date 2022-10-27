@@ -1,3 +1,4 @@
-include ':aar:common'
+if(Integer.parseInt(getProperties().get("MODULE_SRC")) == 1) {
+  include ':aar:common'
+}
 include ':facemgrLibrary'
-

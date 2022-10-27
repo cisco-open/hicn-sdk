@@ -29,6 +29,8 @@ jobs:
     steps:
       - name: "Build:checkout"
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: 'Get Previous tag'
         id: previoustag
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
@@ -36,7 +38,7 @@ jobs:
           fallback: v0.0.0
       
       - name: Publish to Registry
-        uses: elgohr/Publish-Docker-Github-Action@master
+        uses: elgohr/Publish-Docker-Github-Action@v4
         with:
           name: ${{github.repository}}/android-dep
           username: ${{ secrets.HICN_BOT }}

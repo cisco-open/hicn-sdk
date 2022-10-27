@@ -36,9 +36,9 @@ else
 fi
 
 if [ "$MVN_REPO" = "" ]; then
-    gradle $ASSEMBLE -PVERSION=$VERSION_CODE
+    gradle $ASSEMBLE -PVERSION=$VERSION_CODE -PMODULE_SRC=1
 else
-    gradle $ASSEMBLE -PENABLE_HPROXY=$ENABLE_HPROXY
+    gradle $ASSEMBLE -PMODULE_SRC=1
 fi
 
 
