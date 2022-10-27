@@ -29,6 +29,8 @@ jobs:
     steps:
       - name: "Build:checkout"
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: 'Get Previous tag'
         id: previoustag
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
@@ -38,8 +40,8 @@ jobs:
         uses: elgohr/Publish-Docker-Github-Action@v4
         with:
           name: ${{github.repository}}/android-hicn
-          password: ${{ secrets.HICN_ACTIONS_TOKEN }}
-          username: ${{ secrets.HICN_BOT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ github.actor }}
           registry: ghcr.io
           dockerfile: android/ci/Dockerfile_hicn
           buildargs: BASE_IMAGE=ghcr.io/${{github.repository}}/android-dep:latest
