@@ -13,7 +13,7 @@
 # limitations under the License.
 ##############################################################################
 
-ARG BASE_IMAGE=ubuntu:2204
+ARG BASE_IMAGE=ubuntu:22.04
 FROM $BASE_IMAGE
 
 MAINTAINER Angelo Mantellini <manangel@cisco.com>

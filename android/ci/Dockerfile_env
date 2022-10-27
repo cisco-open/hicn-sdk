@@ -20,17 +20,17 @@ MAINTAINER Angelo Mantellini <manangel@cisco.com>
 ENV VERBOSE=1
 
 RUN apt update && apt install -y build-essential openjdk-11-jdk git autoconf libtool wget unzip python3 && apt clean
-RUN wget -c https://services.gradle.org/distributions/gradle-7.4.2-bin.zip -P /tmp \
-    && unzip -d /opt/gradle /tmp/gradle-7.4.2-bin.zip \
-    && rm /tmp/gradle-7.4.2-bin.zip \
-    && echo export GRADLE_HOME=/opt/gradle/gradle-7.4.2 >> /etc/profile.d/gradle.sh \
-    && echo export PATH=/opt/gradle/gradle-7.4.2/bin:${PATH} >> /etc/profile.d/gradle.sh \
+RUN wget -c https://services.gradle.org/distributions/gradle-7.5.1-bin.zip -P /tmp \
+    && unzip -d /opt/gradle /tmp/gradle-7.5.1-bin.zip \
+    && rm /tmp/gradle-7.5.1-bin.zip \
+    && echo export GRADLE_HOME=/opt/gradle/gradle-7.5.1 >> /etc/profile.d/gradle.sh \
+    && echo export PATH=/opt/gradle/gradle-7.5.1/bin:${PATH} >> /etc/profile.d/gradle.sh \
     && cat /etc/profile.d/gradle.sh \
     && chmod +x /etc/profile.d/gradle.sh \
     && . /etc/profile.d/gradle.sh \
     && gradle --version
 
-ENV PATH=/opt/gradle/gradle-7.4.2/bin:${PATH}
+ENV PATH=/opt/gradle/gradle-7.5.1/bin:${PATH}
 
 COPY android /android-sdk
 

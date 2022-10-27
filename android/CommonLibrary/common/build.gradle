@@ -6,14 +6,13 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.2.2'
-        //classpath 'com.android.tools.build:gradle:3.0.0'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
     }
 }
 
 plugins {
     id 'com.android.library'
-    id 'maven-publish'
+    id("maven-publish")
 }
 
 
@@ -25,11 +24,11 @@ android {
         minSdkVersion 28
         targetSdkVersion 30
         versionCode 1
-        versionName "1.0"
+        versionName getProjectProperty('VERSION_NUMBER')
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-        buildConfigField "String", "VERSION",  "\"" + this.properties['VERSION']?.trim()  + "\""
+        buildConfigField "String", "VERSION",  "\"" + this.properties['VERSION_NUMBER']?.trim()  + "\""
     }
 
     buildTypes {
@@ -46,21 +45,12 @@ android {
 
     libraryVariants.all { variant ->
         variant.outputs.each { output ->
-            output.outputFileName = "common-${variant.name}-${defaultConfig.versionName}-${defaultConfig.versionCode}.aar"
+            output.outputFileName = "hicn-common-${variant.name}-${defaultConfig.versionName}-${defaultConfig.versionCode}.aar"
         }
     }
 
 }
 
-
-def getVersionCode_() {
-
-    if ("${getProjectProperty('VERSION_CODE')}".isEmpty())
-        return 5
-    else {
-        return "${getProjectProperty('VERSION_CODE')}".toInteger()
-    }
-}
 
 def getVersion() {
 
@@ -73,7 +63,7 @@ def getVersion() {
 
 def String getProjectProperty(String propertyName)
 {
-    String value = "1"
+    String value = "v0.0.0"
     if (hasProperty(propertyName))
     {
         value = this.properties[propertyName]
@@ -81,38 +71,37 @@ def String getProjectProperty(String propertyName)
     return value
 }
 
-// publishing {
-//     repositories {
-//         maven {
-//             name = 'GitHubPackages'
-//             url = uri(project.findProperty('MVN_REPO'))
-//             credentials {
-//                 username = project.findProperty('A_USER')
-//                 password = project.findProperty('A_PASSWORD')
-//             }
-//         }
+publishing {
+    repositories {
+        maven {
+            name = 'GitHubPackages'
+            url = project.findProperty('MVN_REPO')            
+            credentials {
+                username = project.findProperty('A_USER')
+                password = project.findProperty('A_PASSWORD')
+            }
+        }
 
-//     }
+    }
 
-//     afterEvaluate {
-//         publications {
-//             release(MavenPublication) {
-//                 from components.release
+    afterEvaluate {
+        publications {
+            release(MavenPublication) {
+                from components.release
 
-//                 groupId = 'com.cisco.hicn'
-//                 version = project.findProperty('VERSION')
-//                 artifactId 'common'
-//             }
-//             debug(MavenPublication) {
-//                 from components.debug
-
-//                 groupId = 'com.cisco.hicn'
-//                 version = project.findProperty('VERSION')
-//                 artifactId 'common-debug'
-//             }
-//         }
-//     }
-// }
+                groupId = 'com.cisco.hicn'
+                version = getProjectProperty('VERSION_NUMBER')
+                artifactId 'hicn-common'
+            }
+            debug(MavenPublication) {
+                from components.debug
+                groupId = 'com.cisco.hicn'
+                version = getProjectProperty('VERSION_NUMBER')
+                artifactId 'hicn-common-debug'
+            }
+        }
+    }
+}
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'

@@ -13,10 +13,15 @@
  * limitations under the License.
  */
 
+
+
 buildscript {
     ext {
         MODULE_SRC = '1'
-        VERSION = '1'
+        A_USER = ''
+        A_PASSWORD = ''
+        MVN_REPO = ''
+        VERSION_NUMBER = 'v0.0.10'
     }
     repositories {
         google()
