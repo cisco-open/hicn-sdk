@@ -1,3 +1,9 @@
+## v0.0.4 (2022-10-27)
+
+### Feat
+
+- change credentials github registry to push public docker images (#36)
+
 ## v0.0.3 (2022-10-27)
 
 ### Feat
