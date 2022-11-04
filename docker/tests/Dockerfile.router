@@ -1,0 +1,39 @@
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update
+RUN apt-get install -y git ssh curl wget iproute2
+RUN curl -s https://packagecloud.io/install/repositories/fdio/2202/script.deb.sh | bash
+RUN curl -s https://packagecloud.io/install/repositories/fdio/hicn/script.deb.sh | bash
+RUN apt-get update && apt-get install -y \
+            hicn-plugin \
+            vpp-plugin-core \
+            vpp \
+            libvppinfra \
+            libssh-4 \
+            openssl \
+            libpcre3 \
+            iproute2 \
+            iptables \
+            frr \
+            net-tools\
+            iputils-ping \
+            tini \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get autoremove -y \
+    && apt-get clean
+
+RUN mkdir -p /var/run/frr
+RUN chown -R frr:frr /etc/frr /var/run/frr
+RUN mkdir -p /var/log/vpp
+COPY daemons /etc/frr/
+COPY vtysh.conf /etc/frr/
+COPY frr-start.sh /usr/lib/frr/
+ARG ROUTER
+COPY  frr-router${ROUTER}.conf /etc/frr/frr.conf
+COPY startup.conf /etc/vpp/
+COPY vpp-init-router${ROUTER}.txt /etc/vpp/vpp-init.txt
+WORKDIR /workspace
+
+ENTRYPOINT ["/usr/bin/tini", "--"]
+CMD ["/usr/lib/frr/frr-start.sh"]
