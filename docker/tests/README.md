@@ -1,8 +1,6 @@
 # Functional test description
 
-
 ## Network topology
-
 Host - H
 Router - R
 Linux Bridge - LB
