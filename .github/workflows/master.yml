@@ -72,7 +72,7 @@ jobs:
         run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
       - name: Build and push aar libraries
         if: "startsWith(github.event.head_commit.message, 'bump:') && steps.run.outputs.istag == 'true'"
-        uses: elgohr/Publish-Docker-Github-Action@v4
+        uses: elgohr/Publish-Docker-Github-Action@v5
         env:
           BASE_IMAGE: ghcr.io/${{github.repository}}/android-hicn:latest
           GITHUB_USERNAME: ${{ secrets.HICN_BOT }}
